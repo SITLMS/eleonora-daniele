@@ -40,6 +40,14 @@
             font-weight: 500;
         }
 
+        /* =====================================================
+           PAGINA PRINCIPALE
+           ===================================================== */
+
+        #mainPage {
+            display: block;
+        }
+
         /* HERO */
 
         .hero {
@@ -183,6 +191,12 @@
             background: rgba(255,255,255,0.55);
             border: 1px solid rgba(180,150,90,0.25);
             padding: 35px 25px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: rgba(180,150,90,0.55);
+            transform: translateY(-2px);
         }
 
         .info-card h3 {
@@ -318,7 +332,6 @@
         }
 
         @keyframes fadeIn {
-
             from {
                 opacity: 0;
                 transform: translateY(10px);
@@ -328,7 +341,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
         /* FOOTER */
@@ -351,6 +363,220 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #c9bea5;
+        }
+
+        /* =====================================================
+           PAGINA LA CERIMONIA
+           ===================================================== */
+
+        #cerimoniaPage {
+            display: none;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            background: #f8f5ef;
+        }
+
+        .cerimonia-page {
+            width: 100%;
+            max-width: 720px;
+            min-height: 850px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(180,150,90,0.35);
+            background: #f8f5ef;
+        }
+
+        .cerimonia-background-photo {
+            position: absolute;
+            inset: -15px;
+
+            background-image: url(
+                "https://images.squarespace-cdn.com/content/v1/52871e25e4b0e601addcd783/1528486872422-DKQ2E14SXCO5UP63AJ8H/st_peter_portovenere.jpg"
+            );
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            filter: blur(4px);
+            transform: scale(1.04);
+
+            opacity: 0;
+
+            animation: cerimoniaPhotoAppear 8s ease-in-out 0.5s forwards;
+        }
+
+        .cerimonia-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(248,245,239,0.72),
+                    rgba(248,245,239,0.88)
+                );
+        }
+
+        @keyframes cerimoniaPhotoAppear {
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.02;
+            }
+
+            40% {
+                opacity: 0.08;
+            }
+
+            60% {
+                opacity: 0.18;
+            }
+
+            80% {
+                opacity: 0.35;
+            }
+
+            100% {
+                opacity: 0.55;
+            }
+        }
+
+        .cerimonia-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 55px 35px;
+        }
+
+        .cerimonia-icon {
+            color: #b59a62;
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .cerimonia-label {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 10px;
+            color: #a18a5c;
+            margin-bottom: 12px;
+        }
+
+        .cerimonia-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 500;
+            color: #37382f;
+            margin-bottom: 4px;
+        }
+
+        .cerimonia-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 29px;
+            color: #8f794e;
+            margin-bottom: 25px;
+        }
+
+        .cerimonia-divider {
+            width: 60px;
+            height: 1px;
+            background: #b59a62;
+            margin: 25px auto 35px;
+        }
+
+        .cerimonia-text {
+            max-width: 540px;
+            margin: auto;
+            font-size: 14px;
+        }
+
+        .cerimonia-text strong {
+            font-weight: 500;
+            color: #37382f;
+        }
+
+        .cerimonia-details {
+            margin: 35px auto;
+            padding: 25px 15px;
+            border-top: 1px solid rgba(180,150,90,0.30);
+            border-bottom: 1px solid rgba(180,150,90,0.30);
+        }
+
+        .cerimonia-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            letter-spacing: 3px;
+            color: #37382f;
+        }
+
+        .cerimonia-time {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .cerimonia-location {
+            margin-top: 7px;
+            font-size: 13px;
+            color: #635d4f;
+        }
+
+        .gentle-note {
+            max-width: 540px;
+            margin: 28px auto;
+        }
+
+        .gentle-note h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 27px;
+            font-weight: 500;
+            color: #37382f;
+            margin-bottom: 7px;
+        }
+
+        .gentle-note p {
+            font-size: 13px;
+            line-height: 1.85;
+            color: #5d594c;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 13px 30px;
+            border: 1px solid #b59a62;
+            color: #66583d;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            transition: 0.3s;
+            background: rgba(248,245,239,0.65);
+        }
+
+        .map-button:hover {
+            background: #b59a62;
+            color: white;
+        }
+
+        .back {
+            display: block;
+            margin-top: 30px;
+            color: #777263;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .back:hover {
+            color: #9a8050;
         }
 
         /* MOBILE */
@@ -389,6 +615,33 @@
                 font-size: 68px;
             }
 
+            #cerimoniaPage {
+                padding: 10px;
+            }
+
+            .cerimonia-page {
+                min-height: 820px;
+            }
+
+            .cerimonia-content {
+                padding: 50px 22px;
+            }
+
+            .cerimonia-content h1 {
+                font-size: 45px;
+            }
+
+            .cerimonia-subtitle {
+                font-size: 25px;
+            }
+
+            .cerimonia-text {
+                font-size: 13px;
+            }
+
+            .gentle-note p {
+                font-size: 12.5px;
+            }
         }
 
     </style>
@@ -399,454 +652,710 @@
 <body>
 
 
-    <!-- HERO -->
+    <!-- =====================================================
+         PAGINA PRINCIPALE
+         ===================================================== -->
 
-    <header class="hero">
-
-        <div class="hero-content">
-
-            <div class="small-title">
-                Il nostro giorno
-            </div>
-
-            <h1 class="names">
-
-                Eleonora
-
-                <span class="ampersand">
-                    &
-                </span>
-
-                Daniele
-
-            </h1>
-
-            <div class="date">
-                2 · 2 · 2027
-            </div>
-
-            <p class="intro">
-
-                Siamo felici di condividere con voi
-                uno dei giorni più importanti della nostra vita.
-
-            </p>
-
-            <a href="#rsvp" class="button">
-                Conferma la tua presenza
-            </a>
-
-        </div>
-
-    </header>
+    <div id="mainPage">
 
 
+        <!-- HERO -->
 
-    <!-- INTRO -->
+        <header class="hero">
 
-    <section>
+            <div class="hero-content">
 
-        <div class="section-label">
-            Con immensa gioia
-        </div>
-
-        <h2>
-            Ci sposiamo!
-        </h2>
-
-        <div class="divider"></div>
-
-        <p>
-            Dopo tanti momenti vissuti insieme, è arrivato il giorno di scrivere un nuovo capitolo della nostra storia.
-        </p>
-
-        <p style="margin-top: 15px;">
-            E vorremmo avervi accanto a noi
-            per festeggiare questo giorno speciale.
-        </p>
-
-    </section>
-
-
-
-    <!-- LOCATION -->
-
-    <section>
-
-        <div class="section-label">
-            Il nostro giorno
-        </div>
-
-        <h2>
-            Dove e quando
-        </h2>
-
-        <div class="divider"></div>
-
-        <div class="info-grid">
-
-            <div
-                class="info-card"
-                onclick="window.open('https://www.google.com/maps/search/?api=1&query=Piazza+De+Ferrari,+Genova', '_blank')"
-                style="cursor: pointer;"
-            >
-
-                <div class="icon">
-                    ♡
+                <div class="small-title">
+                    Il nostro giorno
                 </div>
 
-                <h3>
-                    La cerimonia
-                </h3>
+                <h1 class="names">
 
-                <p>
-                    Ore 15:00
-                </p>
+                    Eleonora
 
-                <p>
-                    Piazza De Ferrari
-                    <br>
-                    Genova
-                </p>
+                    <span class="ampersand">
+                        &
+                    </span>
 
-            </div>
+                    Daniele
 
+                </h1>
 
-            <div
-                class="info-card"
-                onclick="window.open('https://www.google.com/maps/search/?api=1&query=Piazza+Duomo,+Milano', '_blank')"
-                style="cursor: pointer;"
-            >
-
-                <div class="icon">
-                    ✦
+                <div class="date">
+                    2 · 2 · 2027
                 </div>
 
-                <h3>
-                    Il ricevimento
-                </h3>
+                <p class="intro">
 
-                <p>
-                    A seguire
+                    Siamo felici di condividere con voi
+                    uno dei giorni più importanti della nostra vita.
+
                 </p>
 
-                <p>
-                    Piazza Duomo
-                    <br>
-                    Milano
-                </p>
+                <a href="#rsvp" class="button">
+                    Conferma la tua presenza
+                </a>
 
             </div>
 
-        </div>
-
-    </section>
+        </header>
 
 
+        <!-- INTRO -->
 
-    <!-- RSVP -->
-
-    <section
-        class="rsvp-section"
-        id="rsvp"
-    >
-
-        <div class="rsvp-inner">
+        <section>
 
             <div class="section-label">
-                RSVP
+                Con immensa gioia
             </div>
 
             <h2>
-                Sarete con noi?
+                Ci sposiamo!
             </h2>
 
             <div class="divider"></div>
 
             <p>
-                Fateci sapere se riuscirete a condividere
-                con noi questa giornata speciale.
+                Dopo tanti momenti vissuti insieme, è arrivato il giorno di scrivere un nuovo capitolo della nostra storia.
             </p>
 
+            <p style="margin-top: 15px;">
+                E vorremmo avervi accanto a noi
+                per festeggiare questo giorno speciale.
+            </p>
 
-            <form id="rsvpForm">
+        </section>
 
 
-                <!-- NOME -->
+        <!-- LOCATION -->
 
-                <label>
-                    Nome e cognome
-                </label>
+        <section>
 
-                <input
-                    type="text"
-                    name="nome"
-                    placeholder="Il tuo nome"
-                    required
+            <div class="section-label">
+                Il nostro giorno
+            </div>
+
+            <h2>
+                Dove e quando
+            </h2>
+
+            <div class="divider"></div>
+
+            <div class="info-grid">
+
+
+                <!-- LA CERIMONIA -->
+
+                <div
+                    class="info-card"
+                    onclick="apriCerimonia()"
+                    style="cursor: pointer;"
+                    role="button"
+                    tabindex="0"
+                    onkeydown="if(event.key === 'Enter' || event.key === ' ') apriCerimonia();"
                 >
 
+                    <div class="icon">
+                        ♡
+                    </div>
 
-                <!-- PRESENZA -->
+                    <h3>
+                        La cerimonia
+                    </h3>
 
-                <label>
-                    Parteciperai?
-                </label>
+                    <p>
+                        Ore 15:00
+                    </p>
 
-                <div class="radio-group">
-
-                    <label class="radio-option">
-
-                        <input
-                            type="radio"
-                            name="presenza"
-                            value="Sì, ci sarò! ❤️"
-                            required
-                        >
-
-                        Sì, ci sarò! ❤️
-
-                    </label>
-
-
-                    <label class="radio-option">
-
-                        <input
-                            type="radio"
-                            name="presenza"
-                            value="Purtroppo non potrò esserci"
-                        >
-
-                        Purtroppo non potrò esserci
-
-                    </label>
+                    <p>
+                        Chiesa di San Pietro
+                        <br>
+                        Porto Venere
+                    </p>
 
                 </div>
 
 
-                <!-- CAMPI PARTECIPAZIONE -->
+                <!-- IL RICEVIMENTO -->
 
-                <div id="campiPartecipazione">
+                <div
+                    class="info-card"
+                    onclick="window.open('https://www.google.com/maps/search/?api=1&query=Piazza+Duomo,+Milano', '_blank')"
+                    style="cursor: pointer;"
+                >
+
+                    <div class="icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Il ricevimento
+                    </h3>
+
+                    <p>
+                        A seguire
+                    </p>
+
+                    <p>
+                        Piazza Duomo
+                        <br>
+                        Milano
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-                    <!-- PERSONE -->
+        <!-- RSVP -->
+
+        <section
+            class="rsvp-section"
+            id="rsvp"
+        >
+
+            <div class="rsvp-inner">
+
+                <div class="section-label">
+                    RSVP
+                </div>
+
+                <h2>
+                    Sarete con noi?
+                </h2>
+
+                <div class="divider"></div>
+
+                <p>
+                    Fateci sapere se riuscirete a condividere
+                    con noi questa giornata speciale.
+                </p>
+
+
+                <form id="rsvpForm">
+
+
+                    <!-- NOME -->
 
                     <label>
-                        Numero di persone
+                        Nome e cognome
                     </label>
 
-                    <select name="persone">
-
-                        <option value="1 Persona">
-                            1 persona
-                        </option>
-
-                        <option value="2 Persone">
-                            2 persone
-                        </option>
-
-                        <option value="3 Persone">
-                            3 persone
-                        </option>
-
-                        <option value="4 Persone">
-                            4 persone
-                        </option>
-
-                    </select>
+                    <input
+                        type="text"
+                        name="nome"
+                        placeholder="Il tuo nome"
+                        required
+                    >
 
 
-                    <!-- ALIMENTAZIONE -->
+                    <!-- PRESENZA -->
 
                     <label>
-                        Esigenze alimentari
+                        Parteciperai?
                     </label>
 
-                    <div class="check-group">
+                    <div class="radio-group">
 
-                        <label class="check-option">
+                        <label class="radio-option">
 
                             <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Nessuna"
-                                id="nessunaAlimentazione"
+                                type="radio"
+                                name="presenza"
+                                value="Sì, ci sarò! ❤️"
+                                required
                             >
 
-                            Nessuna
+                            Sì, ci sarò! ❤️
 
                         </label>
 
 
-                        <label class="check-option">
+                        <label class="radio-option">
 
                             <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Vegetariano/a"
+                                type="radio"
+                                name="presenza"
+                                value="Purtroppo non potrò esserci"
                             >
 
-                            Vegetariano/a
-
-                        </label>
-
-
-                        <label class="check-option">
-
-                            <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Vegano/a"
-                            >
-
-                            Vegano/a
-
-                        </label>
-
-
-                        <label class="check-option">
-
-                            <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Senza glutine / celiachia"
-                            >
-
-                            Senza glutine / celiachia
-
-                        </label>
-
-
-                        <label class="check-option">
-
-                            <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Intolleranza al lattosio"
-                            >
-
-                            Intolleranza al lattosio
-
-                        </label>
-
-
-                        <label class="check-option">
-
-                            <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Allergie alimentari"
-                            >
-
-                            Allergie alimentari
-
-                        </label>
-
-
-                        <label class="check-option">
-
-                            <input
-                                type="checkbox"
-                                name="alimentazione"
-                                value="Altro"
-                            >
-
-                            Altro
+                            Purtroppo non potrò esserci
 
                         </label>
 
                     </div>
 
 
-                    <!-- ALLERGIE -->
+                    <!-- CAMPI PARTECIPAZIONE -->
 
-                    <label>
-                        Se hai allergie alimentari, indicaci quali.
-                    </label>
+                    <div id="campiPartecipazione">
 
-                    <input
-                        type="text"
-                        name="allergie"
-                        placeholder="Indica eventuali allergie"
+
+                        <!-- PERSONE -->
+
+                        <label>
+                            Numero di persone
+                        </label>
+
+                        <select name="persone">
+
+                            <option value="1 Persona">
+                                1 persona
+                            </option>
+
+                            <option value="2 Persone">
+                                2 persone
+                            </option>
+
+                            <option value="3 Persone">
+                                3 persone
+                            </option>
+
+                            <option value="4 Persone">
+                                4 persone
+                            </option>
+
+                        </select>
+
+
+                        <!-- ALIMENTAZIONE -->
+
+                        <label>
+                            Esigenze alimentari
+                        </label>
+
+                        <div class="check-group">
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Nessuna"
+                                    id="nessunaAlimentazione"
+                                >
+
+                                Nessuna
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Vegetariano/a"
+                                >
+
+                                Vegetariano/a
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Vegano/a"
+                                >
+
+                                Vegano/a
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Senza glutine / celiachia"
+                                >
+
+                                Senza glutine / celiachia
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Intolleranza al lattosio"
+                                >
+
+                                Intolleranza al lattosio
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Allergie alimentari"
+                                >
+
+                                Allergie alimentari
+
+                            </label>
+
+
+                            <label class="check-option">
+
+                                <input
+                                    type="checkbox"
+                                    name="alimentazione"
+                                    value="Altro"
+                                >
+
+                                Altro
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- ALLERGIE -->
+
+                        <label>
+                            Se hai allergie alimentari, indicaci quali.
+                        </label>
+
+                        <input
+                            type="text"
+                            name="allergie"
+                            placeholder="Indica eventuali allergie"
+                        >
+
+
+                        <!-- NOTE -->
+
+                        <label>
+                            C'è qualcosa che vorresti segnalarci?
+                        </label>
+
+                        <textarea
+                            name="note"
+                            placeholder="Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- PULSANTE -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+                        Invia conferma
+                    </button>
+
+
+                    <div class="form-note">
+                        La risposta verrà salvata automaticamente.
+                    </div>
+
+
+                    <!-- MESSAGGIO SUCCESSO -->
+
+                    <div
+                        class="success-message"
+                        id="successMessage"
                     >
 
+                        <strong id="successTitle">
+                            Grazie ❤️
+                        </strong>
 
-                    <!-- NOTE -->
+                        <p id="successText">
 
-                    <label>
-                        C'è qualcosa che vorresti segnalarci?
-                    </label>
+                            Abbiamo ricevuto la vostra conferma.<br>
+                            Non vediamo l'ora di festeggiare insieme a voi!
 
-                    <textarea
-                        name="note"
-                        placeholder="Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere."
-                    ></textarea>
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div class="footer-names">
+                Eleonora & Daniele
+            </div>
+
+            <p>
+                2 · 2 · 2027
+            </p>
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PAGINA "LA CERIMONIA"
+         ===================================================== -->
+
+    <div id="cerimoniaPage">
+
+
+        <main class="cerimonia-page">
+
+
+            <div class="cerimonia-background-photo"></div>
+
+            <div class="cerimonia-overlay"></div>
+
+
+            <div class="cerimonia-content">
+
+
+                <div class="cerimonia-icon">
+                    ♡
+                </div>
+
+
+                <div class="cerimonia-label">
+                    Il nostro giorno
+                </div>
+
+
+                <h1>
+                    La cerimonia
+                </h1>
+
+
+                <div class="cerimonia-subtitle">
+                    Il nostro sì
+                </div>
+
+
+                <div class="cerimonia-divider"></div>
+
+
+                <p class="cerimonia-text">
+
+                    La cerimonia avrà luogo presso la
+                    <strong>Chiesa di San Pietro</strong>,
+                    uno dei luoghi più suggestivi di
+                    Porto Venere, affacciato sul mare.
+
+                </p>
+
+
+                <div class="cerimonia-details">
+
+                    <div class="cerimonia-date">
+                        2 · 2 · 2027
+                    </div>
+
+                    <div class="cerimonia-time">
+                        Ore 15:00
+                    </div>
+
+                    <div class="cerimonia-location">
+
+                        Piazzale San Pietro
+                        <br>
+                        Porto Venere
+
+                    </div>
 
                 </div>
 
 
-                <!-- PULSANTE -->
+                <div class="gentle-note">
 
-                <button
-                    type="submit"
-                    class="submit-button"
-                    id="submitButton"
-                >
-                    Invia conferma
-                </button>
+                    <h2>
+                        Una piccola attenzione
+                    </h2>
 
+                    <p>
 
-                <div class="form-note">
-                    La risposta verrà salvata automaticamente.
-                </div>
+                        Essendo la cerimonia ospitata in un luogo
+                        di culto, saremo felici di condividere
+                        con voi questo momento nel rispetto
+                        dell'atmosfera e della sacralità del luogo.
 
+                        <br><br>
 
-                <!-- MESSAGGIO SUCCESSO -->
-
-                <div
-                    class="success-message"
-                    id="successMessage"
-                >
-
-                    <strong id="successTitle">
-                        Grazie ❤️
-                    </strong>
-
-                    <p id="successText">
-
-                        Abbiamo ricevuto la vostra conferma.<br>
-                        Non vediamo l'ora di festeggiare insieme a voi!
+                        Per l'occasione, consigliamo un
+                        abbigliamento elegante e consono
+                        al contesto.
 
                     </p>
 
                 </div>
 
-            </form>
 
-        </div>
+                <div class="gentle-note">
 
-    </section>
+                    <h2>
+                        Un momento speciale
+                    </h2>
 
+                    <p>
 
+                        Trattandosi di una cerimonia raccolta
+                        e particolarmente significativa per noi,
+                        vi chiediamo con affetto di vivere questo
+                        momento con discrezione, lasciando che
+                        siano le emozioni a parlare.
 
-    <!-- FOOTER -->
+                    </p>
 
-    <footer>
-
-        <div class="footer-names">
-            Eleonora & Daniele
-        </div>
-
-        <p>
-            2 · 2 · 2027
-        </p>
-
-    </footer>
+                </div>
 
 
+                <a
+                    class="map-button"
+                    href="https://www.google.com/maps/search/?api=1&query=Chiesa+di+San+Pietro+Piazzale+San+Pietro+Porto+Venere"
+                    target="_blank"
+                    rel="noopener"
+                >
 
-    <!-- SCRIPT -->
+                    ♡ &nbsp; Apri la mappa
+
+                </a>
+
+
+                <a
+                    class="back"
+                    href="#"
+                    onclick="tornaAllInvito(event)"
+                >
+
+                    ← Torna all'invito
+
+                </a>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCRIPT
+         ===================================================== -->
 
     <script>
+
+        /* =====================================================
+           NAVIGAZIONE LA CERIMONIA
+           ===================================================== */
+
+        function apriCerimonia() {
+
+            document.getElementById("mainPage").style.display =
+                "none";
+
+            document.getElementById("cerimoniaPage").style.display =
+                "flex";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            history.pushState(
+                { pagina: "cerimonia" },
+                "",
+                "#cerimonia"
+            );
+
+        }
+
+
+        function tornaAllInvito(event) {
+
+            if (event) {
+                event.preventDefault();
+            }
+
+            document.getElementById("cerimoniaPage").style.display =
+                "none";
+
+            document.getElementById("mainPage").style.display =
+                "block";
+
+            history.pushState(
+                { pagina: "principale" },
+                "",
+                window.location.pathname
+            );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        function controllaPagina() {
+
+            if (
+                window.location.hash === "#cerimonia"
+            ) {
+
+                document.getElementById("mainPage").style.display =
+                    "none";
+
+                document.getElementById("cerimoniaPage").style.display =
+                    "flex";
+
+            }
+
+            else {
+
+                document.getElementById("mainPage").style.display =
+                    "block";
+
+                document.getElementById("cerimoniaPage").style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "popstate",
+            controllaPagina
+        );
+
+
+        window.addEventListener(
+            "hashchange",
+            controllaPagina
+        );
+
+
+        /* =====================================================
+           RSVP
+           ===================================================== */
 
         const RSVP_URL =
             "https://script.google.com/macros/s/AKfycbzrwWGD_MwH_LtOigXzLjsStvL7IvkT6AxniF32qk-_ObtnmVZcYHrA4aqXdQGWgKbF/exec";
@@ -912,9 +1421,7 @@
             );
 
 
-        /* ============================
-           PRESENZA
-           ============================ */
+        /* PRESENZA */
 
         function aggiornaCampi() {
 
@@ -933,24 +1440,18 @@
                 campiPartecipazione.style.display =
                     "none";
 
-
                 personeSelect.value =
                     "1 Persona";
-
 
                 allergieInput.value =
                     "";
 
-
                 noteInput.value =
                     "";
 
-
                 alimentazioneInputs.forEach(
                     function(input) {
-
                         input.checked = false;
-
                     }
                 );
 
@@ -978,10 +1479,7 @@
         );
 
 
-        /* ============================
-           ALIMENTAZIONE
-           "NESSUNA" È ESCLUSIVA
-           ============================ */
+        /* ALIMENTAZIONE */
 
         alimentazioneInputs.forEach(
             function(input) {
@@ -990,13 +1488,11 @@
                     "change",
                     function() {
 
-
                         if (
                             input ===
                             nessunaAlimentazione &&
                             input.checked
                         ) {
-
 
                             alimentazioneInputs.forEach(
                                 function(altra) {
@@ -1016,7 +1512,6 @@
 
                         }
 
-
                         else if (
                             input !==
                             nessunaAlimentazione &&
@@ -1035,9 +1530,7 @@
         );
 
 
-        /* ============================
-           INVIO
-           ============================ */
+        /* INVIO RSVP */
 
         form.addEventListener(
             "submit",
@@ -1077,7 +1570,6 @@
 
                 try {
 
-
                     await fetch(
 
                         RSVP_URL,
@@ -1095,8 +1587,6 @@
                     );
 
 
-                    /* MESSAGGIO NO */
-
                     if (
                         presenza.value ===
                         "Purtroppo non potrò esserci"
@@ -1112,9 +1602,6 @@
 
                     }
 
-
-                    /* MESSAGGIO SÌ */
-
                     else {
 
                         successTitle.textContent =
@@ -1128,15 +1615,10 @@
                     }
 
 
-                    /* RESET */
-
                     form.reset();
-
 
                     aggiornaCampi();
 
-
-                    /* MOSTRA CONFERMA */
 
                     successMessage.style.display =
                         "block";
@@ -1156,7 +1638,6 @@
 
 
                 }
-
 
                 catch (errore) {
 
@@ -1179,6 +1660,11 @@
 
             }
         );
+
+
+        /* AVVIO */
+
+        controllaPagina();
 
     </script>
 
