@@ -1099,12 +1099,7 @@
                         Grazie ❤️
                     </strong>
 
-                    <p id="successText">
-
-                        Abbiamo ricevuto la vostra conferma.<br>
-                        Non vediamo l'ora di festeggiare insieme a voi!
-
-                    </p>
+                    <p id="successText"></p>
 
                 </div>
 
@@ -1443,32 +1438,89 @@
 
 
         /* =====================================================
-           MOSTRA CONFERMA E NASCONDE IL MODULO
+           ESTRAE SOLO IL NOME
            ===================================================== */
 
-        function mostraConferma(tipo) {
+        function estraiNomeCompleto(testo) {
+
+            const valore =
+                testo.trim().replace(/\s+/g, " ");
+
+
+            if (!valore) {
+                return "❤️";
+            }
+
+
+            const parti =
+                valore.split(" ");
+
+
+            return parti[0];
+
+        }
+
+
+        /* =====================================================
+           MOSTRA CONFERMA
+           ===================================================== */
+
+        function mostraConferma(tipo, nome, numeroPersone) {
 
             form.style.display = "none";
 
             successMessage.style.display = "block";
 
 
+            const nomeVisualizzato =
+                estraiNomeCompleto(nome);
+
+
+            /* ================================================
+               RISPOSTA NEGATIVA
+               Il numero di persone non è disponibile,
+               quindi manteniamo il testo generico.
+               ================================================ */
+
             if (tipo === "no") {
 
                 successTitle.textContent =
-                    "Ci dispiace non poterti avere con noi";
+                    "Grazie " + nomeVisualizzato + " ❤️";
 
 
                 successText.innerHTML =
-                    "Saremo comunque felici " +
-                    "di averti vicino con il cuore. ❤️";
+                    "Abbiamo ricevuto la tua risposta.<br>" +
+                    "Ci dispiace non poterti avere con noi,<br>" +
+                    "ma saremo felici di averti vicino con il cuore. ❤️";
 
             }
+
+
+            /* ================================================
+               UNA PERSONA
+               ================================================ */
+
+            else if (numeroPersone === "1 Persona") {
+
+                successTitle.textContent =
+                    "Grazie " + nomeVisualizzato + " ❤️";
+
+
+                successText.innerHTML =
+                    "Abbiamo ricevuto la tua conferma.<br>" +
+                    "Non vediamo l'ora di festeggiare insieme a te!";
+
+            }
+
+
+            /* ================================================
+               DUE O PIÙ PERSONE
+               ================================================ */
 
             else {
 
                 successTitle.textContent =
-                    "Grazie ❤️";
+                    "Grazie " + nomeVisualizzato + " ❤️";
 
 
                 successText.innerHTML =
@@ -1492,15 +1544,35 @@
                 );
 
 
+            const rsvpNome =
+                localStorage.getItem(
+                    "eleonoraDanieleRSVPNome"
+                );
+
+
+            const rsvpPersone =
+                localStorage.getItem(
+                    "eleonoraDanieleRSVPPersone"
+                );
+
+
             if (rsvpInviato === "si") {
 
-                mostraConferma("si");
+                mostraConferma(
+                    "si",
+                    rsvpNome || "",
+                    rsvpPersone || "1 Persona"
+                );
 
             }
 
             else if (rsvpInviato === "no") {
 
-                mostraConferma("no");
+                mostraConferma(
+                    "no",
+                    rsvpNome || "",
+                    ""
+                );
 
             }
 
@@ -1670,6 +1742,14 @@
                     new FormData(form);
 
 
+                const nomeInserito =
+                    formData.get("nome") || "";
+
+
+                const personeInserite =
+                    formData.get("persone") || "1 Persona";
+
+
                 try {
 
 
@@ -1690,7 +1770,19 @@
                     );
 
 
-                    /* SALVA NEL BROWSER CHE LA RISPOSTA È STATA INVIATA */
+                    /* ========================================
+                       SALVA I DATI NEL BROWSER
+                       ======================================== */
+
+                    localStorage.setItem(
+                        "eleonoraDanieleRSVPNome",
+                        nomeInserito
+                    );
+
+
+                    /* ========================================
+                       RISPOSTA NEGATIVA
+                       ======================================== */
 
                     if (
                         presenza.value ===
@@ -1703,9 +1795,23 @@
                         );
 
 
-                        mostraConferma("no");
+                        localStorage.removeItem(
+                            "eleonoraDanieleRSVPPersone"
+                        );
+
+
+                        mostraConferma(
+                            "no",
+                            nomeInserito,
+                            ""
+                        );
 
                     }
+
+
+                    /* ========================================
+                       RISPOSTA POSITIVA
+                       ======================================== */
 
                     else {
 
@@ -1715,12 +1821,24 @@
                         );
 
 
-                        mostraConferma("si");
+                        localStorage.setItem(
+                            "eleonoraDanieleRSVPPersone",
+                            personeInserite
+                        );
+
+
+                        mostraConferma(
+                            "si",
+                            nomeInserito,
+                            personeInserite
+                        );
 
                     }
 
 
-                    /* TORNA IN CIMA ALLA CONFERMA */
+                    /* ========================================
+                       PORTA LA CONFERMA AL CENTRO
+                       ======================================== */
 
                     successMessage.scrollIntoView({
 
