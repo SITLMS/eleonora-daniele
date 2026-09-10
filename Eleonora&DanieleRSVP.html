@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eleonora & Daniele — 2 Febbraio 2027</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            color: #3f4039;
+            background: #f8f5ef;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+
+            background:
+                linear-gradient(
+                    rgba(248,245,239,0.78),
+                    rgba(248,245,239,0.88)
+                ),
+                url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85")
+                center / cover;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(180,150,90,0.35);
+            border-radius: 50%;
+        }
+
+        .hero::before {
+            top: 40px;
+            left: 40px;
+        }
+
+        .hero::after {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .small-title {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 11px;
+            color: #9a8050;
+            margin-bottom: 25px;
+        }
+
+        .names {
+            font-size: clamp(60px, 13vw, 110px);
+            line-height: 0.9;
+            color: #37382f;
+        }
+
+        .ampersand {
+            display: block;
+            font-size: 45px;
+            color: #b59a62;
+            margin: 12px 0;
+        }
+
+        .date {
+            margin-top: 35px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 27px;
+            letter-spacing: 3px;
+        }
+
+        .intro {
+            margin-top: 25px;
+            font-size: 14px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 30px;
+            border: 1px solid #b59a62;
+            color: #66583d;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #b59a62;
+            color: white;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 90px 25px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 10px;
+            color: #a18a5c;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+            color: #37382f;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: #b59a62;
+            margin: 25px auto 35px;
+        }
+
+        /* INFO */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 45px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(180,150,90,0.25);
+            padding: 35px 25px;
+        }
+
+        .info-card h3 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .icon {
+            color: #b59a62;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* RSVP */
+
+        .rsvp-section {
+            background: #eeeadf;
+            max-width: none;
+        }
+
+        .rsvp-inner {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        form {
+            text-align: left;
+            margin-top: 35px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #635d4f;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 12px;
+            border: 1px solid #d4cdbd;
+            background: #faf8f3;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            color: #3f4039;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group,
+        .check-group {
+            margin-bottom: 25px;
+        }
+
+        .radio-option,
+        .check-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .radio-option input,
+        .check-option input {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #a88d58;
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #8f7648;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .form-note {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 11px;
+            color: #777263;
+        }
+
+        /* SUCCESS */
+
+        .success-message {
+            display: none;
+            margin-top: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            background: #eeeadf;
+            border: 1px solid rgba(180,150,90,0.35);
+            color: #5d594c;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .success-message strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 500;
+            color: #37382f;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 55px 20px;
+            text-align: center;
+            background: #3e4038;
+            color: #eee9dc;
+        }
+
+        footer .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c9bea5;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .hero::before,
+            .hero::after {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero::before {
+                top: 20px;
+                left: 20px;
+            }
+
+            .hero::after {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+
+            h2 {
+                font-size: 40px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .names {
+                font-size: 68px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Il nostro giorno
+            </div>
+
+            <h1 class="names">
+
+                Eleonora
+
+                <span class="ampersand">
+                    &
+                </span>
+
+                Daniele
+
+            </h1>
+
+            <div class="date">
+                2 · 2 · 2027
+            </div>
+
+            <p class="intro">
+
+                Siamo felici di condividere con voi
+                uno dei giorni più importanti della nostra vita.
+
+            </p>
+
+            <a href="#rsvp" class="button">
+                Conferma la tua presenza
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- INTRO -->
+
+    <section>
+
+        <div class="section-label">
+            Con immensa gioia
+        </div>
+
+        <h2>
+            Ci sposiamo!
+        </h2>
+
+        <div class="divider"></div>
+
+        <p>
+            Dopo tanti momenti vissuti insieme, è arrivato il giorno di scrivere un nuovo capitolo della nostra storia.
+        </p>
+
+        <p style="margin-top: 15px;">
+            E vorremmo avervi accanto a noi
+            per festeggiare questo giorno speciale.
+        </p>
+
+    </section>
+
+
+
+    <!-- LOCATION -->
+
+    <section>
+
+        <div class="section-label">
+            Il nostro giorno
+        </div>
+
+        <h2>
+            Dove e quando
+        </h2>
+
+        <div class="divider"></div>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <div class="icon">
+                    ♡
+                </div>
+
+                <h3>
+                    La cerimonia
+                </h3>
+
+                <p>
+                    Ore 15:00
+                </p>
+
+                <p>
+                    Chiesa / Location
+                    <br>
+                    Indirizzo da definire
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Il ricevimento
+                </h3>
+
+                <p>
+                    A seguire
+                </p>
+
+                <p>
+                    Location del ricevimento
+                    <br>
+                    Indirizzo da definire
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- RSVP -->
+
+    <section
+        class="rsvp-section"
+        id="rsvp"
+    >
+
+        <div class="rsvp-inner">
+
+            <div class="section-label">
+                RSVP
+            </div>
+
+            <h2>
+                Sarete con noi?
+            </h2>
+
+            <div class="divider"></div>
+
+            <p>
+                Fateci sapere se riuscirete a condividere
+                con noi questa giornata speciale.
+            </p>
+
+
+            <form id="rsvpForm">
+
+
+                <!-- NOME -->
+
+                <label>
+                    Nome e cognome
+                </label>
+
+                <input
+                    type="text"
+                    name="nome"
+                    placeholder="Il tuo nome"
+                    required
+                >
+
+
+                <!-- PRESENZA -->
+
+                <label>
+                    Parteciperai?
+                </label>
+
+                <div class="radio-group">
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="presenza"
+                            value="Sì, ci sarò! ❤️"
+                            required
+                        >
+
+                        Sì, ci sarò! ❤️
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="presenza"
+                            value="Purtroppo non potrò esserci"
+                        >
+
+                        Purtroppo non potrò esserci
+
+                    </label>
+
+                </div>
+
+
+                <!-- CAMPI PARTECIPAZIONE -->
+
+                <div id="campiPartecipazione">
+
+
+                    <!-- PERSONE -->
+
+                    <label>
+                        Numero di persone
+                    </label>
+
+                    <select name="persone">
+
+                        <option value="1 Persona">
+                            1 persona
+                        </option>
+
+                        <option value="2 Persone">
+                            2 persone
+                        </option>
+
+                        <option value="3 Persone">
+                            3 persone
+                        </option>
+
+                        <option value="4 Persone">
+                            4 persone
+                        </option>
+
+                    </select>
+
+
+                    <!-- ALIMENTAZIONE -->
+
+                    <label>
+                        Esigenze alimentari
+                    </label>
+
+                    <div class="check-group">
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Nessuna"
+                                id="nessunaAlimentazione"
+                            >
+
+                            Nessuna
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Vegetariano/a"
+                            >
+
+                            Vegetariano/a
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Vegano/a"
+                            >
+
+                            Vegano/a
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Senza glutine / celiachia"
+                            >
+
+                            Senza glutine / celiachia
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Intolleranza al lattosio"
+                            >
+
+                            Intolleranza al lattosio
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Allergie alimentari"
+                            >
+
+                            Allergie alimentari
+
+                        </label>
+
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                name="alimentazione"
+                                value="Altro"
+                            >
+
+                            Altro
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- ALLERGIE -->
+
+                    <label>
+                        Se hai allergie alimentari, indicaci quali.
+                    </label>
+
+                    <input
+                        type="text"
+                        name="allergie"
+                        placeholder="Indica eventuali allergie"
+                    >
+
+
+                    <!-- NOTE -->
+
+                    <label>
+                        C'è qualcosa che vorresti segnalarci?
+                    </label>
+
+                    <textarea
+                        name="note"
+                        placeholder="Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PULSANTE -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                    id="submitButton"
+                >
+                    Invia conferma
+                </button>
+
+
+                <div class="form-note">
+                    La risposta verrà salvata automaticamente.
+                </div>
+
+
+                <!-- MESSAGGIO SUCCESSO -->
+
+                <div
+                    class="success-message"
+                    id="successMessage"
+                >
+
+                    <strong id="successTitle">
+                        Grazie ❤️
+                    </strong>
+
+                    <p id="successText">
+
+                        Abbiamo ricevuto la vostra conferma.<br>
+                        Non vediamo l'ora di festeggiare insieme a voi!
+
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-names">
+            Eleonora & Daniele
+        </div>
+
+        <p>
+            2 · 2 · 2027
+        </p>
+
+    </footer>
+
+
+
+    <!-- SCRIPT -->
+
+    <script>
+
+        const RSVP_URL =
+            "https://script.google.com/macros/s/AKfycbzrwWGD_MwH_LtOigXzLjsStvL7IvkT6AxniF32qk-_ObtnmVZcYHrA4aqXdQGWgKbF/exec";
+
+
+        const form =
+            document.getElementById("rsvpForm");
+
+
+        const campiPartecipazione =
+            document.getElementById("campiPartecipazione");
+
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        const successTitle =
+            document.getElementById("successTitle");
+
+
+        const successText =
+            document.getElementById("successText");
+
+
+        const presenzaInputs =
+            document.querySelectorAll(
+                'input[name="presenza"]'
+            );
+
+
+        const personeSelect =
+            document.querySelector(
+                'select[name="persone"]'
+            );
+
+
+        const allergieInput =
+            document.querySelector(
+                'input[name="allergie"]'
+            );
+
+
+        const noteInput =
+            document.querySelector(
+                'textarea[name="note"]'
+            );
+
+
+        const alimentazioneInputs =
+            document.querySelectorAll(
+                'input[name="alimentazione"]'
+            );
+
+
+        const nessunaAlimentazione =
+            document.getElementById(
+                "nessunaAlimentazione"
+            );
+
+
+        /* ============================
+           PRESENZA
+           ============================ */
+
+        function aggiornaCampi() {
+
+            const selezionato =
+                document.querySelector(
+                    'input[name="presenza"]:checked'
+                );
+
+
+            if (
+                selezionato &&
+                selezionato.value ===
+                "Purtroppo non potrò esserci"
+            ) {
+
+                campiPartecipazione.style.display =
+                    "none";
+
+
+                personeSelect.value =
+                    "1 Persona";
+
+
+                allergieInput.value =
+                    "";
+
+
+                noteInput.value =
+                    "";
+
+
+                alimentazioneInputs.forEach(
+                    function(input) {
+
+                        input.checked = false;
+
+                    }
+                );
+
+            }
+
+            else {
+
+                campiPartecipazione.style.display =
+                    "block";
+
+            }
+
+        }
+
+
+        presenzaInputs.forEach(
+            function(input) {
+
+                input.addEventListener(
+                    "change",
+                    aggiornaCampi
+                );
+
+            }
+        );
+
+
+        /* ============================
+           ALIMENTAZIONE
+           "NESSUNA" È ESCLUSIVA
+           ============================ */
+
+        alimentazioneInputs.forEach(
+            function(input) {
+
+                input.addEventListener(
+                    "change",
+                    function() {
+
+
+                        if (
+                            input ===
+                            nessunaAlimentazione &&
+                            input.checked
+                        ) {
+
+
+                            alimentazioneInputs.forEach(
+                                function(altra) {
+
+                                    if (
+                                        altra !==
+                                        nessunaAlimentazione
+                                    ) {
+
+                                        altra.checked =
+                                            false;
+
+                                    }
+
+                                }
+                            );
+
+                        }
+
+
+                        else if (
+                            input !==
+                            nessunaAlimentazione &&
+                            input.checked
+                        ) {
+
+                            nessunaAlimentazione.checked =
+                                false;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ============================
+           INVIO
+           ============================ */
+
+        form.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const presenza =
+                    document.querySelector(
+                        'input[name="presenza"]:checked'
+                    );
+
+
+                if (!presenza) {
+
+                    alert(
+                        "Seleziona se parteciperai oppure no."
+                    );
+
+                    return;
+
+                }
+
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.textContent =
+                    "Invio in corso...";
+
+
+                const formData =
+                    new FormData(form);
+
+
+                try {
+
+
+                    await fetch(
+
+                        RSVP_URL,
+
+                        {
+
+                            method: "POST",
+
+                            body: formData,
+
+                            mode: "no-cors"
+
+                        }
+
+                    );
+
+
+                    /* MESSAGGIO NO */
+
+                    if (
+                        presenza.value ===
+                        "Purtroppo non potrò esserci"
+                    ) {
+
+                        successTitle.textContent =
+                            "Ci dispiace non poterti avere con noi";
+
+
+                        successText.innerHTML =
+                            "Saremo comunque felici " +
+                            "di averti vicino con il cuore. ❤️";
+
+                    }
+
+
+                    /* MESSAGGIO SÌ */
+
+                    else {
+
+                        successTitle.textContent =
+                            "Grazie ❤️";
+
+
+                        successText.innerHTML =
+                            "Abbiamo ricevuto la vostra conferma.<br>" +
+                            "Non vediamo l'ora di festeggiare insieme a voi!";
+
+                    }
+
+
+                    /* RESET */
+
+                    form.reset();
+
+
+                    aggiornaCampi();
+
+
+                    /* MOSTRA CONFERMA */
+
+                    successMessage.style.display =
+                        "block";
+
+
+                    submitButton.textContent =
+                        "Risposta inviata ❤️";
+
+
+                    successMessage.scrollIntoView({
+
+                        behavior: "smooth",
+
+                        block: "center"
+
+                    });
+
+
+                }
+
+
+                catch (errore) {
+
+                    console.error(errore);
+
+
+                    submitButton.disabled =
+                        false;
+
+
+                    submitButton.textContent =
+                        "Riprova";
+
+
+                    alert(
+                        "Si è verificato un problema durante l'invio. Riprova."
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
