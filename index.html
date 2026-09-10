@@ -309,9 +309,9 @@
         .success-message {
             display: none;
             margin-top: 30px;
-            padding: 35px 25px;
+            padding: 40px 25px;
             text-align: center;
-            background: #eeeadf;
+            background: #f8f5ef;
             border: 1px solid rgba(180,150,90,0.35);
             color: #5d594c;
             animation: fadeIn 0.6s ease;
@@ -323,7 +323,7 @@
             font-size: 38px;
             font-weight: 500;
             color: #37382f;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .success-message p {
@@ -331,7 +331,14 @@
             line-height: 1.8;
         }
 
+        .success-heart {
+            font-size: 27px;
+            color: #b59a62;
+            margin-bottom: 10px;
+        }
+
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
                 transform: translateY(10px);
@@ -341,6 +348,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         /* FOOTER */
@@ -424,6 +432,7 @@
         }
 
         @keyframes cerimoniaPhotoAppear {
+
             0% {
                 opacity: 0;
             }
@@ -447,6 +456,7 @@
             100% {
                 opacity: 0.55;
             }
+
         }
 
         .cerimonia-content {
@@ -642,6 +652,7 @@
             .gentle-note p {
                 font-size: 12.5px;
             }
+
         }
 
     </style>
@@ -833,6 +844,10 @@
                     con noi questa giornata speciale.
                 </p>
 
+
+                <!-- =================================================
+                     MODULO RSVP
+                     ================================================= -->
 
                 <form id="rsvpForm">
 
@@ -1064,28 +1079,34 @@
                         La risposta verrà salvata automaticamente.
                     </div>
 
+                </form>
 
-                    <!-- MESSAGGIO SUCCESSO -->
 
-                    <div
-                        class="success-message"
-                        id="successMessage"
-                    >
+                <!-- =================================================
+                     MESSAGGIO DI CONFERMA
+                     ================================================= -->
 
-                        <strong id="successTitle">
-                            Grazie ❤️
-                        </strong>
+                <div
+                    class="success-message"
+                    id="successMessage"
+                >
 
-                        <p id="successText">
-
-                            Abbiamo ricevuto la vostra conferma.<br>
-                            Non vediamo l'ora di festeggiare insieme a voi!
-
-                        </p>
-
+                    <div class="success-heart">
+                        ♡
                     </div>
 
-                </form>
+                    <strong id="successTitle">
+                        Grazie ❤️
+                    </strong>
+
+                    <p id="successText">
+
+                        Abbiamo ricevuto la vostra conferma.<br>
+                        Non vediamo l'ora di festeggiare insieme a voi!
+
+                    </p>
+
+                </div>
 
             </div>
 
@@ -1421,7 +1442,74 @@
             );
 
 
-        /* PRESENZA */
+        /* =====================================================
+           MOSTRA CONFERMA E NASCONDE IL MODULO
+           ===================================================== */
+
+        function mostraConferma(tipo) {
+
+            form.style.display = "none";
+
+            successMessage.style.display = "block";
+
+
+            if (tipo === "no") {
+
+                successTitle.textContent =
+                    "Ci dispiace non poterti avere con noi";
+
+
+                successText.innerHTML =
+                    "Saremo comunque felici " +
+                    "di averti vicino con il cuore. ❤️";
+
+            }
+
+            else {
+
+                successTitle.textContent =
+                    "Grazie ❤️";
+
+
+                successText.innerHTML =
+                    "Abbiamo ricevuto la vostra conferma.<br>" +
+                    "Non vediamo l'ora di festeggiare insieme a voi!";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           VERIFICA SE È GIÀ STATA INVIATA UNA RISPOSTA
+           ===================================================== */
+
+        function controllaRSVPSalvato() {
+
+            const rsvpInviato =
+                localStorage.getItem(
+                    "eleonoraDanieleRSVP"
+                );
+
+
+            if (rsvpInviato === "si") {
+
+                mostraConferma("si");
+
+            }
+
+            else if (rsvpInviato === "no") {
+
+                mostraConferma("no");
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PRESENZA
+           ===================================================== */
 
         function aggiornaCampi() {
 
@@ -1440,18 +1528,24 @@
                 campiPartecipazione.style.display =
                     "none";
 
+
                 personeSelect.value =
                     "1 Persona";
+
 
                 allergieInput.value =
                     "";
 
+
                 noteInput.value =
                     "";
 
+
                 alimentazioneInputs.forEach(
                     function(input) {
+
                         input.checked = false;
+
                     }
                 );
 
@@ -1479,7 +1573,10 @@
         );
 
 
-        /* ALIMENTAZIONE */
+        /* =====================================================
+           ALIMENTAZIONE
+           "NESSUNA" È ESCLUSIVA
+           ===================================================== */
 
         alimentazioneInputs.forEach(
             function(input) {
@@ -1488,11 +1585,13 @@
                     "change",
                     function() {
 
+
                         if (
                             input ===
                             nessunaAlimentazione &&
                             input.checked
                         ) {
+
 
                             alimentazioneInputs.forEach(
                                 function(altra) {
@@ -1512,6 +1611,7 @@
 
                         }
 
+
                         else if (
                             input !==
                             nessunaAlimentazione &&
@@ -1530,7 +1630,9 @@
         );
 
 
-        /* INVIO RSVP */
+        /* =====================================================
+           INVIO
+           ===================================================== */
 
         form.addEventListener(
             "submit",
@@ -1570,6 +1672,7 @@
 
                 try {
 
+
                     await fetch(
 
                         RSVP_URL,
@@ -1587,46 +1690,37 @@
                     );
 
 
+                    /* SALVA NEL BROWSER CHE LA RISPOSTA È STATA INVIATA */
+
                     if (
                         presenza.value ===
                         "Purtroppo non potrò esserci"
                     ) {
 
-                        successTitle.textContent =
-                            "Ci dispiace non poterti avere con noi";
+                        localStorage.setItem(
+                            "eleonoraDanieleRSVP",
+                            "no"
+                        );
 
 
-                        successText.innerHTML =
-                            "Saremo comunque felici " +
-                            "di averti vicino con il cuore. ❤️";
+                        mostraConferma("no");
 
                     }
 
                     else {
 
-                        successTitle.textContent =
-                            "Grazie ❤️";
+                        localStorage.setItem(
+                            "eleonoraDanieleRSVP",
+                            "si"
+                        );
 
 
-                        successText.innerHTML =
-                            "Abbiamo ricevuto la vostra conferma.<br>" +
-                            "Non vediamo l'ora di festeggiare insieme a voi!";
+                        mostraConferma("si");
 
                     }
 
 
-                    form.reset();
-
-                    aggiornaCampi();
-
-
-                    successMessage.style.display =
-                        "block";
-
-
-                    submitButton.textContent =
-                        "Risposta inviata ❤️";
-
+                    /* TORNA IN CIMA ALLA CONFERMA */
 
                     successMessage.scrollIntoView({
 
@@ -1638,6 +1732,7 @@
 
 
                 }
+
 
                 catch (errore) {
 
@@ -1662,9 +1757,13 @@
         );
 
 
-        /* AVVIO */
+        /* =====================================================
+           AVVIO
+           ===================================================== */
 
         controllaPagina();
+
+        controllaRSVPSalvato();
 
     </script>
 
