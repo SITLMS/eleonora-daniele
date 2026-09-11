@@ -1647,15 +1647,23 @@
 
                         <!-- ALLERGIE -->
 
-                        <label>
-                            Se hai allergie alimentari, indicaci quali.
-                        </label>
+                      <!-- ALLERGIE -->
 
-                        <input
-                            type="text"
-                            name="allergie"
-                            placeholder="Indica eventuali allergie"
-                        >
+					<div id="allergieBox" style="display: none;">
+
+						<label>
+							Se hai allergie alimentari, indicaci quali.
+						</label>
+
+						<input
+							type="text"
+							name="allergie"
+							id="allergieInput"
+							placeholder="Indica eventuali allergie"
+						>
+
+					</div>
+
 
 
                         <!-- NOTE -->
@@ -2356,6 +2364,56 @@
             document.getElementById(
                 "nessunaAlimentazione"
             );
+			
+			const allergieBox =
+    document.getElementById("allergieBox");
+
+
+		function aggiornaAllergie() {
+
+			const allergieSelezionate =
+				document.querySelector(
+					'input[name="alimentazione"][value="Allergie alimentari"]'
+				);
+
+
+			if (
+				allergieSelezionate &&
+				allergieSelezionate.checked
+			) {
+
+				allergieBox.style.display =
+					"block";
+
+			}
+
+			else {
+
+				allergieBox.style.display =
+					"none";
+
+				allergieInput.value =
+					"";
+					
+				allergieBox.style.display =
+					"none";
+
+			}
+
+		}
+
+
+		alimentazioneInputs.forEach(
+				function(input) {
+
+					input.addEventListener(
+						"change",
+						aggiornaAllergie
+					);
+
+				}
+			);
+
 
 
         /* =====================================================
@@ -2558,62 +2616,82 @@
         );
 
 
-        /* =====================================================
-           ALIMENTAZIONE
-           "NESSUNA" È ESCLUSIVA
-           ===================================================== */
 
-        alimentazioneInputs.forEach(
-            function(input) {
+  
+		  /* =====================================================
+		   ALIMENTAZIONE
+		   "NESSUNA" È ESCLUSIVA
+		   ===================================================== */
 
-                input.addEventListener(
-                    "change",
-                    function() {
+		alimentazioneInputs.forEach(
+			function(input) {
 
-
-                        if (
-                            input ===
-                            nessunaAlimentazione &&
-                            input.checked
-                        ) {
+				input.addEventListener(
+					"change",
+					function() {
 
 
-                            alimentazioneInputs.forEach(
-                                function(altra) {
+						if (
+							input ===
+							nessunaAlimentazione &&
+							input.checked
+						) {
 
-                                    if (
-                                        altra !==
-                                        nessunaAlimentazione
-                                    ) {
+							alimentazioneInputs.forEach(
+								function(altra) {
 
-                                        altra.checked =
-                                            false;
+									if (
+										altra !==
+										nessunaAlimentazione
+									) {
 
-                                    }
+										altra.checked =
+											false;
 
-                                }
-                            );
+									}
 
-                        }
+								}
+							);
+
+							// Aggiorna anche la box delle allergie
+							aggiornaAllergie();
+
+						}
 
 
-                        else if (
-                            input !==
-                            nessunaAlimentazione &&
-                            input.checked
-                        ) {
+						else if (
+							input !==
+							nessunaAlimentazione &&
+							input.checked
+						) {
 
-                            nessunaAlimentazione.checked =
-                                false;
+							nessunaAlimentazione.checked =
+								false;
 
-                        }
+							// Aggiorna anche la box delle allergie
+							aggiornaAllergie();
 
-                    }
-                );
+						}
 
-            }
-        );
 
+						else {
+
+							// Caso in cui viene tolta una spunta
+							aggiornaAllergie();
+
+						}
+
+					}
+				);
+
+			}
+		);
+
+		  
+		  
+		  
+		  
+  
 
         /* =====================================================
            INVIO RSVP
