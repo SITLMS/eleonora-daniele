@@ -778,7 +778,7 @@
 
             opacity: 0;
 
-            animation: cerimoniaPhotoAppear 8s ease-in-out 0.5s forwards;
+            animation: cerimoniaPhotoAppear 6s ease-in-out 0.5s forwards;
         }
 
         .cerimonia-overlay {
@@ -1004,6 +1004,327 @@
         .back:hover {
             color: #9a8050;
         }
+		
+		
+		/* =====================================================
+           PAGINA DETTAGLIO — IL RICEVIMENTO
+           ===================================================== */
+
+        #ricevimentoPage {
+            display: none;
+
+            min-height: 100vh;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px 15px;
+
+            background: #f8f5ef;
+        }
+
+        .ricevimento-page {
+            width: 100%;
+
+            max-width: 720px;
+
+            min-height: 850px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            border: 1px solid rgba(180,150,90,0.35);
+
+            background: #f8f5ef;
+        }
+
+   
+   
+   .ricevimento-background-photo {
+    position: absolute;
+
+    inset: -15px;
+
+    background-image: url(
+        "https://cdn.blastness.biz/media/1228/top/thumbs/full/locanda-de-banchieri.jpg"
+    );
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    filter: blur(4px);
+
+    transform: scale(1.04);
+
+    opacity: 0;
+
+    animation: ricevimentoPhotoAppear 6s ease-in-out 0.5s forwards;
+}
+
+   
+   
+   
+   
+   
+
+	   
+	   
+	   
+
+        .ricevimento-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(248,245,239,0.72),
+                    rgba(248,245,239,0.88)
+                );
+        }
+
+@keyframes ricevimentoPhotoAppear {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.02;
+    }
+
+    40% {
+        opacity: 0.08;
+    }
+
+    60% {
+        opacity: 0.18;
+    }
+
+    80% {
+        opacity: 0.35;
+    }
+
+    100% {
+        opacity: 0.55;
+    }
+
+}
+
+
+
+
+
+        .ricevimento-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            padding: 55px 35px;
+        }
+
+        .ricevimento-icon {
+            color: #b59a62;
+
+            font-size: 29px;
+
+            margin-bottom: 12px;
+        }
+
+        .ricevimento-label {
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: 10px;
+
+            color: #a18a5c;
+
+            margin-bottom: 12px;
+        }
+
+        .ricevimento-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 56px;
+
+            font-weight: 500;
+
+            color: #37382f;
+
+            margin-bottom: 4px;
+        }
+
+        .ricevimento-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 29px;
+
+            color: #8f794e;
+
+            margin-bottom: 25px;
+        }
+
+        .ricevimento-divider {
+            width: 60px;
+
+            height: 1px;
+
+            background: #b59a62;
+
+            margin: 25px auto 35px;
+        }
+
+        .ricevimento-text {
+            max-width: 540px;
+
+            margin: auto;
+
+            font-size: 14px;
+        }
+
+        .ricevimento-text strong {
+            font-weight: 500;
+
+            color: #37382f;
+        }
+
+        .ricevimento-details {
+            margin: 35px auto;
+
+            padding: 25px 15px;
+
+            border-top: 1px solid rgba(180,150,90,0.30);
+
+            border-bottom: 1px solid rgba(180,150,90,0.30);
+        }
+
+        .ricevimento-date {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 28px;
+
+            letter-spacing: 3px;
+
+            color: #37382f;
+        }
+
+        .ricevimento-time {
+            margin-top: 5px;
+
+            font-size: 14px;
+        }
+
+        .ricevimento-location {
+            margin-top: 7px;
+
+            font-size: 13px;
+
+            color: #635d4f;
+        }
+
+        .michelin-note {
+            margin-top: 12px;
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 16px;
+
+            font-style: italic;
+
+            color: #8f794e;
+        }
+
+        .gentle-note {
+            max-width: 540px;
+
+            margin: 28px auto;
+        }
+
+        .gentle-note h2 {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 27px;
+
+            font-weight: 500;
+
+            color: #37382f;
+
+            margin-bottom: 7px;
+        }
+
+        .gentle-note p {
+            font-size: 13px;
+
+            line-height: 1.85;
+
+            color: #5d594c;
+        }
+
+        .map-button {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 13px 30px;
+
+            border: 1px solid #b59a62;
+
+            color: #66583d;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-size: 10px;
+
+            transition: 0.3s;
+
+            background: rgba(248,245,239,0.65);
+        }
+
+        .map-button:hover {
+            background: #b59a62;
+
+            color: white;
+        }
+
+        .back {
+            display: block;
+
+            margin-top: 30px;
+
+            color: #777263;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        .back:hover {
+            color: #9a8050;
+        }
+
+		
+		
+		
 
 
         /* =====================================================
@@ -1306,14 +1627,16 @@
                      RICEVIMENTO
                      ========================================= -->
 
-                <div
-                    class="info-card"
-                    id="ricevimento"
-                    onclick="window.open('https://www.google.com/maps/search/?api=1&query=Piazza+Duomo,+Milano', '_blank')"
-                    style="cursor: pointer;"
-                    role="button"
-                    tabindex="0"
-                >
+				<div
+					class="info-card"
+					id="ricevimento"
+					onclick="apriRicevimento()"
+					style="cursor: pointer;"
+					role="button"
+					tabindex="0"
+					onkeydown="if(event.key === 'Enter' || event.key === ' ') apriRicevimento();"
+				>
+
 
                     <div class="icon">
                         ✦
@@ -1327,11 +1650,14 @@
                         A seguire
                     </p>
 
-                    <p>
-                        Piazza Duomo
-                        <br>
-                        Milano
-                    </p>
+					<p>
+						Locanda de' Banchieri
+					<br>
+						Via Porredo, 32
+					<br>
+						54035 Fosdinovo (MS)
+					</p>
+
 
                 </div>
 
@@ -2074,6 +2400,152 @@
         </main>
 
     </div>
+	
+	    <!-- =====================================================
+         =====================================================
+         PAGINA DETTAGLIO — IL RICEVIMENTO
+         =====================================================
+         ===================================================== -->
+
+    <div id="ricevimentoPage">
+
+        <main class="ricevimento-page">
+
+            <div class="ricevimento-background-photo"></div>
+
+            <div class="ricevimento-overlay"></div>
+
+            <div class="ricevimento-content">
+
+                <div class="ricevimento-icon">
+                    ✦
+                </div>
+
+                <div class="ricevimento-label">
+                    Il nostro giorno
+                </div>
+
+                <h1>
+                    Il ricevimento
+                </h1>
+
+                <div class="ricevimento-subtitle">
+                    Una serata insieme
+                </div>
+
+                <div class="ricevimento-divider"></div>
+
+                <p class="ricevimento-text">
+
+                    Dopo la cerimonia, ci sposteremo verso
+                    la Lunigiana per condividere insieme
+                    una serata speciale, tra buon cibo,
+                    atmosfera e convivialità.
+
+                    <br><br>
+
+                    Il ricevimento sarà ospitato presso
+                    <strong>Locanda de' Banchieri</strong>,
+                    a Fosdinovo, immersa nelle colline
+                    della Lunigiana.
+
+                </p>
+
+
+                <!-- CHEF -->
+
+                <div class="gentle-note">
+
+                    <p>
+
+                        La cucina dello Chef Patron
+                        <strong>Giacomo Devoto</strong>,
+                        legata al territorio e riconosciuta
+                        con una stella Michelin, accompagnerà
+                        la nostra serata.
+
+                    </p>
+
+                </div>
+
+
+                <!-- MOMENTO DI ATTESA -->
+
+                <div class="gentle-note">
+
+                    <h2>
+                        In attesa di ritrovarci
+                    </h2>
+
+                    <p>
+
+                        Mentre ci concederemo qualche istante
+                        per le fotografie, vi aspetterà un momento
+                        di convivialità con piccoli assaggi
+                        e bevande, per iniziare insieme
+                        i festeggiamenti.
+
+                    </p>
+
+                </div>
+
+
+                <!-- DATA E LUOGO -->
+
+                <div class="ricevimento-details">
+
+                    <div class="ricevimento-date">
+                        3 · 9 · 2027
+                    </div>
+
+                    <div class="ricevimento-time">
+                        Ore 19:30
+                    </div>
+
+                    <div class="ricevimento-location">
+
+                        Locanda de' Banchieri
+                        <br>
+                        Via Porredo, 32
+                        <br>
+                        54035 Fosdinovo (MS)
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="map-button"
+                    href="https://www.google.com/maps/search/?api=1&query=Locanda+de+Banchieri,+Via+Porredo+32,+54035+Fosdinovo+MS"
+                    target="_blank"
+                    rel="noopener"
+                >
+
+                    ✦ &nbsp; Apri la mappa
+
+                </a>
+
+
+                <a
+                    class="back"
+                    href="#"
+                    onclick="tornaAllInvito(event)"
+                >
+
+                    ← Torna all'invito
+
+                </a>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+	
+	
 
 
 
@@ -2152,12 +2624,38 @@
 			}
 
 
+        /* =====================================================
+           APRE LA PAGINA IL RICEVIMENTO
+           ===================================================== */
+
+        function apriRicevimento() {
+
+            document.getElementById("mainPage").style.display =
+                "none";
+
+            document.getElementById("ricevimentoPage").style.display =
+                "flex";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            history.pushState(
+                { pagina: "ricevimento" },
+                "",
+                "#ricevimento"
+            );
+
+        }
 
 
 
         /* =====================================================
            TORNA ALL'INVITO
            ===================================================== */
+
+     
 
         function tornaAllInvito(event) {
 
@@ -2166,6 +2664,9 @@
             }
 
             document.getElementById("cerimoniaPage").style.display =
+                "none";
+
+            document.getElementById("ricevimentoPage").style.display =
                 "none";
 
             document.getElementById("mainPage").style.display =
@@ -2188,6 +2689,9 @@
         /* =====================================================
            CONTROLLA QUALE PAGINA MOSTRARE
            ===================================================== */
+        /* =====================================================
+           CONTROLLA QUALE PAGINA MOSTRARE
+           ===================================================== */
 
         function controllaPagina() {
 
@@ -2201,6 +2705,24 @@
                 document.getElementById("cerimoniaPage").style.display =
                     "flex";
 
+                document.getElementById("ricevimentoPage").style.display =
+                    "none";
+
+            }
+
+            else if (
+                window.location.hash === "#ricevimento"
+            ) {
+
+                document.getElementById("mainPage").style.display =
+                    "none";
+
+                document.getElementById("cerimoniaPage").style.display =
+                    "none";
+
+                document.getElementById("ricevimentoPage").style.display =
+                    "flex";
+
             }
 
             else {
@@ -2211,9 +2733,13 @@
                 document.getElementById("cerimoniaPage").style.display =
                     "none";
 
+                document.getElementById("ricevimentoPage").style.display =
+                    "none";
+
             }
 
         }
+
 
 
         window.addEventListener(
