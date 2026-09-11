@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Eleonora & Daniele — 2 Febbraio 2027</title>
+    <title>Eleonora & Daniele — 3 Settembre 2027</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,14 @@
 
     <style>
 
+        /* =====================================================
+           =====================================================
+           SEZIONE 01 — STILI GLOBALI
+           Qui si modificano colori, caratteri, dimensioni
+           e stile generale del sito.
+           =====================================================
+           ===================================================== */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,6 +31,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 65px;
         }
 
         body {
@@ -40,23 +49,60 @@
             font-weight: 500;
         }
 
+
         /* =====================================================
-           PAGINA PRINCIPALE
+           MENU DI NAVIGAZIONE
            ===================================================== */
 
-        #mainPage {
-            display: block;
+        .site-menu {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+
+            padding: 13px 20px;
+
+            background: rgba(248,245,239,0.95);
+            backdrop-filter: blur(8px);
+
+            border-bottom: 1px solid rgba(180,150,90,0.20);
         }
 
-        /* HERO */
+        .site-menu a {
+            color: #655b4d;
+            text-decoration: none;
+
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            font-size: 9px;
+
+            transition: 0.3s;
+        }
+
+        .site-menu a:hover {
+            color: #a88d58;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
 
         .hero {
             min-height: 100vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
+
             padding: 40px 20px;
+
             position: relative;
 
             background:
@@ -72,8 +118,10 @@
         .hero::after {
             content: "";
             position: absolute;
+
             width: 180px;
             height: 180px;
+
             border: 1px solid rgba(180,150,90,0.35);
             border-radius: 50%;
         }
@@ -117,6 +165,7 @@
 
         .date {
             margin-top: 35px;
+
             font-family: 'Cormorant Garamond', serif;
             font-size: 27px;
             letter-spacing: 3px;
@@ -124,7 +173,9 @@
 
         .intro {
             margin-top: 25px;
+
             font-size: 14px;
+
             max-width: 450px;
             margin-left: auto;
             margin-right: auto;
@@ -132,14 +183,19 @@
 
         .button {
             display: inline-block;
+
             margin-top: 35px;
             padding: 13px 30px;
+
             border: 1px solid #b59a62;
+
             color: #66583d;
             text-decoration: none;
+
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 10px;
+
             transition: 0.3s;
         }
 
@@ -148,7 +204,10 @@
             color: white;
         }
 
-        /* SECTIONS */
+
+        /* =====================================================
+           STILI GENERALI DELLE SEZIONI
+           ===================================================== */
 
         section {
             padding: 90px 25px;
@@ -178,19 +237,28 @@
             margin: 25px auto 35px;
         }
 
-        /* INFO */
+
+        /* =====================================================
+           CARDS CERIMONIA / RICEVIMENTO
+           ===================================================== */
 
         .info-grid {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 25px;
+
             margin-top: 45px;
         }
 
         .info-card {
             background: rgba(255,255,255,0.55);
+
             border: 1px solid rgba(180,150,90,0.25);
+
             padding: 35px 25px;
+
             transition: 0.3s;
         }
 
@@ -210,7 +278,19 @@
             margin-bottom: 10px;
         }
 
-        /* RSVP */
+
+        /* =====================================================
+           SEZIONE RICEVIMENTO
+           ===================================================== */
+
+        #ricevimento {
+            background: #faf8f3;
+        }
+
+
+        /* =====================================================
+           RSVP
+           ===================================================== */
 
         .rsvp-section {
             background: #eeeadf;
@@ -229,10 +309,14 @@
 
         label {
             display: block;
+
             margin-bottom: 8px;
+
             font-size: 12px;
+
             text-transform: uppercase;
             letter-spacing: 1.5px;
+
             color: #635d4f;
         }
 
@@ -240,12 +324,18 @@
         select,
         textarea {
             width: 100%;
+
             padding: 13px 12px;
+
             border: 1px solid #d4cdbd;
+
             background: #faf8f3;
+
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
+
             margin-bottom: 25px;
+
             color: #3f4039;
         }
 
@@ -263,8 +353,11 @@
         .check-option {
             display: flex;
             align-items: center;
+
             gap: 10px;
+
             margin: 10px 0;
+
             font-size: 14px;
         }
 
@@ -276,15 +369,23 @@
 
         .submit-button {
             width: 100%;
+
             padding: 15px;
+
             background: #a88d58;
+
             border: none;
+
             color: white;
+
             text-transform: uppercase;
             letter-spacing: 2px;
+
             cursor: pointer;
+
             font-family: 'Montserrat', sans-serif;
             font-size: 11px;
+
             transition: 0.3s;
         }
 
@@ -299,30 +400,48 @@
 
         .form-note {
             margin-top: 15px;
+
             text-align: center;
+
             font-size: 11px;
+
             color: #777263;
         }
 
-        /* SUCCESS */
+
+        /* =====================================================
+           MESSAGGIO DI CONFERMA RSVP
+           ===================================================== */
 
         .success-message {
             display: none;
+
             margin-top: 30px;
+
             padding: 40px 25px;
+
             text-align: center;
+
             background: #f8f5ef;
+
             border: 1px solid rgba(180,150,90,0.35);
+
             color: #5d594c;
+
             animation: fadeIn 0.6s ease;
         }
 
         .success-message strong {
             display: block;
+
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 38px;
+
             font-weight: 500;
+
             color: #37382f;
+
             margin-bottom: 12px;
         }
 
@@ -351,12 +470,222 @@
 
         }
 
-        /* FOOTER */
+
+        /* =====================================================
+           SEZIONE UN PENSIERO PER NOI
+           ===================================================== */
+
+        .gift-section {
+            background: #f8f5ef;
+        }
+
+        .gift-intro {
+            max-width: 600px;
+            margin: 0 auto;
+
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .gift-intro strong {
+            display: block;
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 25px;
+            font-weight: 500;
+
+            color: #37382f;
+
+            margin-bottom: 10px;
+        }
+
+        .gift-button {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 13px 30px;
+
+            border: 1px solid #b59a62;
+
+            background: transparent;
+
+            color: #66583d;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            font-size: 10px;
+
+            cursor: pointer;
+
+            font-family: 'Montserrat', sans-serif;
+
+            transition: 0.3s;
+        }
+
+        .gift-button:hover {
+            background: #b59a62;
+            color: white;
+        }
+
+        .gift-details {
+            display: none;
+
+            max-width: 650px;
+
+            margin: 40px auto 0;
+
+            padding: 35px 25px;
+
+            background: rgba(255,255,255,0.55);
+
+            border: 1px solid rgba(180,150,90,0.25);
+
+            animation: fadeIn 0.5s ease;
+        }
+
+        .gift-block {
+            padding: 20px 0;
+        }
+
+        .gift-block + .gift-block {
+            border-top: 1px solid rgba(180,150,90,0.20);
+        }
+
+        .gift-block h3 {
+            font-size: 29px;
+            color: #37382f;
+            margin-bottom: 12px;
+        }
+
+        .gift-block p {
+            font-size: 13px;
+            line-height: 1.85;
+            color: #5d594c;
+        }
+
+        .travel-note {
+            margin-top: 12px;
+        }
+
+        .iban-box {
+            margin-top: 20px;
+        }
+
+        .iban-label {
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #9a8050;
+
+            margin-bottom: 7px;
+        }
+
+        .iban-row {
+            display: flex;
+            align-items: stretch;
+
+            gap: 8px;
+        }
+
+        .iban-value {
+            flex: 1;
+
+            padding: 13px 12px;
+
+            background: #faf8f3;
+
+            border: 1px solid #d4cdbd;
+
+            font-family: monospace;
+
+            font-size: 13px;
+
+            word-break: break-all;
+
+            color: #3f4039;
+        }
+
+        .copy-iban-button {
+            padding: 0 18px;
+
+            border: 1px solid #b59a62;
+
+            background: transparent;
+
+            color: #66583d;
+
+            cursor: pointer;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.3s;
+        }
+
+        .copy-iban-button:hover {
+            background: #b59a62;
+            color: white;
+        }
+
+        .gift-link {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 12px 25px;
+
+            border: 1px solid #b59a62;
+
+            color: #66583d;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            font-size: 10px;
+
+            transition: 0.3s;
+        }
+
+        .gift-link:hover {
+            background: #b59a62;
+            color: white;
+        }
+
+        .gift-placeholder {
+            color: #a18a5c;
+            font-size: 11px;
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
 
         footer {
             padding: 55px 20px;
+
             text-align: center;
+
             background: #3e4038;
+
             color: #eee9dc;
         }
 
@@ -367,41 +696,60 @@
 
         footer p {
             margin-top: 10px;
+
             font-size: 11px;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
+
             color: #c9bea5;
         }
 
+
         /* =====================================================
-           PAGINA LA CERIMONIA
+           PAGINA DETTAGLIO — LA CERIMONIA
            ===================================================== */
 
         #cerimoniaPage {
             display: none;
+
             min-height: 100vh;
+
             align-items: center;
             justify-content: center;
+
             padding: 20px 15px;
+
             background: #f8f5ef;
         }
 
         .cerimonia-page {
             width: 100%;
+
             max-width: 720px;
+
             min-height: 850px;
+
             position: relative;
+
             overflow: hidden;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
+
             text-align: center;
+
             border: 1px solid rgba(180,150,90,0.35);
+
             background: #f8f5ef;
         }
 
         .cerimonia-background-photo {
             position: absolute;
+
             inset: -15px;
 
             background-image: url(
@@ -409,10 +757,13 @@
             );
 
             background-position: center;
+
             background-size: cover;
+
             background-repeat: no-repeat;
 
             filter: blur(4px);
+
             transform: scale(1.04);
 
             opacity: 0;
@@ -422,6 +773,7 @@
 
         .cerimonia-overlay {
             position: absolute;
+
             inset: 0;
 
             background:
@@ -461,127 +813,181 @@
 
         .cerimonia-content {
             position: relative;
+
             z-index: 2;
+
             width: 100%;
+
             padding: 55px 35px;
         }
 
         .cerimonia-icon {
             color: #b59a62;
+
             font-size: 29px;
+
             margin-bottom: 12px;
         }
 
         .cerimonia-label {
             text-transform: uppercase;
+
             letter-spacing: 4px;
+
             font-size: 10px;
+
             color: #a18a5c;
+
             margin-bottom: 12px;
         }
 
         .cerimonia-content h1 {
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 56px;
+
             font-weight: 500;
+
             color: #37382f;
+
             margin-bottom: 4px;
         }
 
         .cerimonia-subtitle {
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 29px;
+
             color: #8f794e;
+
             margin-bottom: 25px;
         }
 
         .cerimonia-divider {
             width: 60px;
+
             height: 1px;
+
             background: #b59a62;
+
             margin: 25px auto 35px;
         }
 
         .cerimonia-text {
             max-width: 540px;
+
             margin: auto;
+
             font-size: 14px;
         }
 
         .cerimonia-text strong {
             font-weight: 500;
+
             color: #37382f;
         }
 
         .cerimonia-details {
             margin: 35px auto;
+
             padding: 25px 15px;
+
             border-top: 1px solid rgba(180,150,90,0.30);
+
             border-bottom: 1px solid rgba(180,150,90,0.30);
         }
 
         .cerimonia-date {
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 28px;
+
             letter-spacing: 3px;
+
             color: #37382f;
         }
 
         .cerimonia-time {
             margin-top: 5px;
+
             font-size: 14px;
         }
 
         .cerimonia-location {
             margin-top: 7px;
+
             font-size: 13px;
+
             color: #635d4f;
         }
 
         .gentle-note {
             max-width: 540px;
+
             margin: 28px auto;
         }
 
         .gentle-note h2 {
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 27px;
+
             font-weight: 500;
+
             color: #37382f;
+
             margin-bottom: 7px;
         }
 
         .gentle-note p {
             font-size: 13px;
+
             line-height: 1.85;
+
             color: #5d594c;
         }
 
         .map-button {
             display: inline-block;
+
             margin-top: 18px;
+
             padding: 13px 30px;
+
             border: 1px solid #b59a62;
+
             color: #66583d;
+
             text-decoration: none;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
+
             font-size: 10px;
+
             transition: 0.3s;
+
             background: rgba(248,245,239,0.65);
         }
 
         .map-button:hover {
             background: #b59a62;
+
             color: white;
         }
 
         .back {
             display: block;
+
             margin-top: 30px;
+
             color: #777263;
+
             text-decoration: none;
+
             font-size: 11px;
+
             letter-spacing: 1px;
         }
 
@@ -589,7 +995,28 @@
             color: #9a8050;
         }
 
-        /* MOBILE */
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .site-menu {
+                gap: 17px;
+
+                overflow-x: auto;
+
+                justify-content: flex-start;
+
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .site-menu a {
+                white-space: nowrap;
+            }
+
+        }
 
         @media (max-width: 650px) {
 
@@ -653,6 +1080,14 @@
                 font-size: 12.5px;
             }
 
+            .iban-row {
+                flex-direction: column;
+            }
+
+            .copy-iban-button {
+                padding: 12px;
+            }
+
         }
 
     </style>
@@ -664,13 +1099,49 @@
 
 
     <!-- =====================================================
-         PAGINA PRINCIPALE
+         =====================================================
+         SEZIONE 02 — MENU DI NAVIGAZIONE
+         Modificare qui le voci del menu.
+         =====================================================
+         ===================================================== -->
+
+    <nav class="site-menu">
+
+        <a href="#cerimonia" onclick="apriCerimonia(); return false;">
+            Cerimonia
+        </a>
+
+        <a href="#ricevimento">
+            Ricevimento
+        </a>
+
+        <a href="#come-arrivare">
+            Come arrivare
+        </a>
+
+        <a href="#rsvp">
+            RSVP
+        </a>
+
+        <a href="#pensiero">
+            Un pensiero per noi
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         =====================================================
+         SEZIONE 03 — PAGINA PRINCIPALE / LANDING
+         =====================================================
          ===================================================== -->
 
     <div id="mainPage">
 
 
-        <!-- HERO -->
+        <!-- =================================================
+             HERO
+             ================================================= -->
 
         <header class="hero">
 
@@ -693,7 +1164,7 @@
                 </h1>
 
                 <div class="date">
-                    2 · 2 · 2027
+                    3 · 9 · 2027
                 </div>
 
                 <p class="intro">
@@ -712,9 +1183,14 @@
         </header>
 
 
-        <!-- INTRO -->
+        <!-- =================================================
+             =================================================
+             SEZIONE 04 — INTRODUZIONE
+             Qui possiamo modificare il testo introduttivo.
+             =================================================
+             ================================================= -->
 
-        <section>
+        <section id="introduzione">
 
             <div class="section-label">
                 Con immensa gioia
@@ -727,20 +1203,30 @@
             <div class="divider"></div>
 
             <p>
-                Dopo tanti momenti vissuti insieme, è arrivato il giorno di scrivere un nuovo capitolo della nostra storia.
+                Dopo tanti momenti vissuti insieme,
+                è arrivato il giorno di scrivere un nuovo
+                capitolo della nostra storia.
             </p>
 
             <p style="margin-top: 15px;">
+
                 E vorremmo avervi accanto a noi
                 per festeggiare questo giorno speciale.
+
             </p>
 
         </section>
 
 
-        <!-- LOCATION -->
+        <!-- =================================================
+             =================================================
+             SEZIONE 05 — CERIMONIA E RICEVIMENTO
+             La card Cerimonia apre la pagina dedicata.
+             La card Ricevimento porta alla mappa.
+             =================================================
+             ================================================= -->
 
-        <section>
+        <section id="luoghi">
 
             <div class="section-label">
                 Il nostro giorno
@@ -755,10 +1241,13 @@
             <div class="info-grid">
 
 
-                <!-- LA CERIMONIA -->
+                <!-- =========================================
+                     CERIMONIA
+                     ========================================= -->
 
                 <div
                     class="info-card"
+                    id="cerimonia"
                     onclick="apriCerimonia()"
                     style="cursor: pointer;"
                     role="button"
@@ -787,12 +1276,17 @@
                 </div>
 
 
-                <!-- IL RICEVIMENTO -->
+                <!-- =========================================
+                     RICEVIMENTO
+                     ========================================= -->
 
                 <div
                     class="info-card"
+                    id="ricevimento"
                     onclick="window.open('https://www.google.com/maps/search/?api=1&query=Piazza+Duomo,+Milano', '_blank')"
                     style="cursor: pointer;"
+                    role="button"
+                    tabindex="0"
                 >
 
                     <div class="icon">
@@ -820,7 +1314,46 @@
         </section>
 
 
-        <!-- RSVP -->
+        <!-- =================================================
+             =================================================
+             SEZIONE 05B — COME ARRIVARE
+             Per ora collega alla parte relativa ai luoghi.
+             Questa sezione è predisposta per le informazioni
+             future su parcheggi, indicazioni e soggiorno.
+             =================================================
+             ================================================= -->
+
+        <section id="come-arrivare">
+
+            <div class="section-label">
+                Informazioni utili
+            </div>
+
+            <h2>
+                Come arrivare
+            </h2>
+
+            <div class="divider"></div>
+
+            <p>
+                Stiamo preparando tutte le informazioni utili
+                per raggiungere i luoghi della giornata.
+            </p>
+
+            <p style="margin-top: 15px;">
+                Indicazioni, parcheggi e suggerimenti
+                per rendere il vostro arrivo il più semplice possibile.
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             =================================================
+             SEZIONE 06 — RSVP
+             Il funzionamento del modulo viene mantenuto.
+             =================================================
+             ================================================= -->
 
         <section
             class="rsvp-section"
@@ -845,9 +1378,9 @@
                 </p>
 
 
-                <!-- =================================================
+                <!-- =========================================
                      MODULO RSVP
-                     ================================================= -->
+                     ========================================= -->
 
                 <form id="rsvpForm">
 
@@ -1082,9 +1615,9 @@
                 </form>
 
 
-                <!-- =================================================
+                <!-- =========================================
                      MESSAGGIO DI CONFERMA
-                     ================================================= -->
+                     ========================================= -->
 
                 <div
                     class="success-message"
@@ -1108,7 +1641,177 @@
         </section>
 
 
-        <!-- FOOTER -->
+        <!-- =================================================
+             =================================================
+             SEZIONE 07 — UN PENSIERO PER NOI
+             Questa è la sezione da modificare per IBAN,
+             viaggio, lista nozze e relativo testo.
+             =================================================
+             ================================================= -->
+
+        <section
+            class="gift-section"
+            id="pensiero"
+        >
+
+            <div class="section-label">
+                Un piccolo pensiero
+            </div>
+
+            <h2>
+                Un pensiero per noi
+            </h2>
+
+            <div class="divider"></div>
+
+
+            <!-- TESTO PRINCIPALE -->
+
+            <div class="gift-intro">
+
+                <strong>
+                    La vostra presenza e il vostro affetto
+                    sono il regalo più bello.
+                </strong>
+
+                <p>
+                    Se desiderate accompagnarci con un piccolo
+                    pensiero, abbiamo lasciato qui qualche possibilità.
+                </p>
+
+            </div>
+
+
+            <!-- PULSANTE APERTURA DETTAGLI -->
+
+            <button
+                type="button"
+                class="gift-button"
+                id="giftToggleButton"
+                onclick="mostraPensiero()"
+            >
+                Scopri le possibilità
+            </button>
+
+
+            <!-- =============================================
+                 DETTAGLI
+                 ============================================= -->
+
+            <div
+                class="gift-details"
+                id="giftDetails"
+            >
+
+
+                <!-- =========================================
+                     VIAGGIO
+                     ========================================= -->
+
+                <div class="gift-block">
+
+                    <h3>
+                        Il nostro viaggio
+                    </h3>
+
+                    <p>
+
+                        Stiamo immaginando un viaggio che per noi
+                        rappresenterà l'inizio di questo nuovo capitolo.
+
+                        <br><br>
+
+                        Sarà bello pensare che, in qualche modo,
+                        sarete anche voi con noi in questo viaggio.
+
+                    </p>
+
+
+                    <!--
+                    =================================================
+                    QUI POTREMO INSERIRE IL LINK REALE DELLA
+                    LISTA VIAGGIO QUANDO SARÀ DISPONIBILE.
+
+                    ESEMPIO:
+
+                    <a
+                        class="gift-link"
+                        href="INSERIRE_LINK_LISTA_VIAGGIO"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Partecipa al nostro viaggio
+                    </a>
+
+                    =================================================
+                    -->
+
+                    <p class="gift-placeholder">
+                        [ Link alla lista viaggio da inserire ]
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     IBAN
+                     ========================================= -->
+
+                <div class="gift-block">
+
+                    <h3>
+                        Un piccolo pensiero
+                    </h3>
+
+                    <p>
+                        Se preferite accompagnarci semplicemente
+                        con un pensiero per il nostro nuovo inizio,
+                        potete farlo utilizzando queste coordinate.
+                    </p>
+
+
+                    <div class="iban-box">
+
+                        <div class="iban-label">
+                            IBAN
+                        </div>
+
+
+                        <div class="iban-row">
+
+                            <div
+                                class="iban-value"
+                                id="ibanValue"
+                            >
+                                IBAN DA INSERIRE
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="copy-iban-button"
+                                onclick="copiaIBAN()"
+                            >
+                                Copia IBAN
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             =================================================
+             SEZIONE 08 — FOOTER
+             =================================================
+             ================================================= -->
 
         <footer>
 
@@ -1117,7 +1820,7 @@
             </div>
 
             <p>
-                2 · 2 · 2027
+                3 · 9 · 2027
             </p>
 
         </footer>
@@ -1127,7 +1830,11 @@
 
 
     <!-- =====================================================
-         PAGINA "LA CERIMONIA"
+         =====================================================
+         SEZIONE 09 — PAGINA DETTAGLIO LA CERIMONIA
+         Questa parte viene mostrata separatamente quando
+         si entra nella pagina della cerimonia.
+         =====================================================
          ===================================================== -->
 
     <div id="cerimoniaPage">
@@ -1180,7 +1887,7 @@
                 <div class="cerimonia-details">
 
                     <div class="cerimonia-date">
-                        2 · 2 · 2027
+                        3 · 9 · 2027
                     </div>
 
                     <div class="cerimonia-time">
@@ -1273,13 +1980,16 @@
 
 
     <!-- =====================================================
-         SCRIPT
+         =====================================================
+         SEZIONE 10 — JAVASCRIPT / NAVIGAZIONE
+         =====================================================
          ===================================================== -->
 
     <script>
 
+
         /* =====================================================
-           NAVIGAZIONE LA CERIMONIA
+           APRE LA PAGINA LA CERIMONIA
            ===================================================== */
 
         function apriCerimonia() {
@@ -1303,6 +2013,10 @@
 
         }
 
+
+        /* =====================================================
+           TORNA ALL'INVITO
+           ===================================================== */
 
         function tornaAllInvito(event) {
 
@@ -1329,6 +2043,10 @@
 
         }
 
+
+        /* =====================================================
+           CONTROLLA QUALE PAGINA MOSTRARE
+           ===================================================== */
 
         function controllaPagina() {
 
@@ -1370,8 +2088,93 @@
 
 
         /* =====================================================
-           RSVP
+           MOSTRA / NASCONDE "UN PENSIERO PER NOI"
            ===================================================== */
+
+        function mostraPensiero() {
+
+            const dettagli =
+                document.getElementById("giftDetails");
+
+            const pulsante =
+                document.getElementById("giftToggleButton");
+
+
+            if (
+                dettagli.style.display === "block"
+            ) {
+
+                dettagli.style.display =
+                    "none";
+
+                pulsante.textContent =
+                    "Scopri le possibilità";
+
+            }
+
+            else {
+
+                dettagli.style.display =
+                    "block";
+
+                pulsante.textContent =
+                    "Nascondi dettagli";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           COPIA IBAN
+           ===================================================== */
+
+        function copiaIBAN() {
+
+            const iban =
+                document.getElementById("ibanValue").textContent.trim();
+
+
+            if (
+                iban === "IBAN DA INSERIRE"
+            ) {
+
+                alert(
+                    "L'IBAN non è ancora stato inserito."
+                );
+
+                return;
+
+            }
+
+
+            navigator.clipboard.writeText(iban)
+                .then(function() {
+
+                    alert(
+                        "IBAN copiato negli appunti."
+                    );
+
+                })
+                .catch(function() {
+
+                    alert(
+                        "Non è stato possibile copiare automaticamente l'IBAN."
+                    );
+
+                });
+
+        }
+
+
+
+        /* =====================================================
+           =====================================================
+           SEZIONE 11 — RSVP
+           Qui viene mantenuta la logica del modulo RSVP.
+           =====================================================
+           ===================================================== */
+
 
         const RSVP_URL =
             "https://script.google.com/macros/s/AKfycbzrwWGD_MwH_LtOigXzLjsStvL7IvkT6AxniF32qk-_ObtnmVZcYHrA4aqXdQGWgKbF/exec";
@@ -1476,11 +2279,7 @@
                 estraiNomeCompleto(nome);
 
 
-            /* ================================================
-               RISPOSTA NEGATIVA
-               Il numero di persone non è disponibile,
-               quindi manteniamo il testo generico.
-               ================================================ */
+            /* RISPOSTA NEGATIVA */
 
             if (tipo === "no") {
 
@@ -1496,9 +2295,7 @@
             }
 
 
-            /* ================================================
-               UNA PERSONA
-               ================================================ */
+            /* UNA PERSONA */
 
             else if (numeroPersone === "1 Persona") {
 
@@ -1513,9 +2310,7 @@
             }
 
 
-            /* ================================================
-               DUE O PIÙ PERSONE
-               ================================================ */
+            /* DUE O PIÙ PERSONE */
 
             else {
 
@@ -1703,7 +2498,7 @@
 
 
         /* =====================================================
-           INVIO
+           INVIO RSVP
            ===================================================== */
 
         form.addEventListener(
@@ -1770,9 +2565,7 @@
                     );
 
 
-                    /* ========================================
-                       SALVA I DATI NEL BROWSER
-                       ======================================== */
+                    /* SALVA IL NOME */
 
                     localStorage.setItem(
                         "eleonoraDanieleRSVPNome",
@@ -1780,9 +2573,7 @@
                     );
 
 
-                    /* ========================================
-                       RISPOSTA NEGATIVA
-                       ======================================== */
+                    /* RISPOSTA NEGATIVA */
 
                     if (
                         presenza.value ===
@@ -1809,9 +2600,7 @@
                     }
 
 
-                    /* ========================================
-                       RISPOSTA POSITIVA
-                       ======================================== */
+                    /* RISPOSTA POSITIVA */
 
                     else {
 
@@ -1836,9 +2625,7 @@
                     }
 
 
-                    /* ========================================
-                       PORTA LA CONFERMA AL CENTRO
-                       ======================================== */
+                    /* PORTA LA CONFERMA AL CENTRO */
 
                     successMessage.scrollIntoView({
 
@@ -1883,7 +2670,9 @@
 
         controllaRSVPSalvato();
 
+
     </script>
+
 
 </body>
 
