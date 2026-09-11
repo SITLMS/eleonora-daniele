@@ -215,7 +215,8 @@
             margin: auto;
             text-align: center;
         }
-
+		
+		
         .section-label {
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -728,7 +729,7 @@
             align-items: center;
             justify-content: center;
 
-            padding: 20px 15px;
+			padding: 20px 15px;
 
             background: #f8f5ef;
         }
@@ -1062,8 +1063,8 @@
             }
 
             #cerimoniaPage {
-                padding: 10px;
-            }
+				padding: 10px;
+			}
 
             .cerimonia-page {
                 min-height: 820px;
@@ -1098,6 +1099,8 @@
             }
 
         }
+		
+
 
     </style>
 
@@ -1128,9 +1131,9 @@
             Come arrivare
         </a>
 
-        <a href="#rsvp">
-            RSVP
-        </a>
+		<a href="#rsvp" onclick="vaiASezione(event, 'rsvp')">
+			RSVP
+		</a>
 
         <a href="#pensiero">
             Un pensiero per noi
@@ -1188,9 +1191,11 @@
                 </a>
 								
 				<div style="margin-top: 28px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;">
-					<a href="#introduzione" style="color: #8f794e; text-decoration: none;">
-						Scopri di più ↓
-					</a>
+				<a href="#introduzione"
+				   onclick="vaiAIntroduzione(event)"
+				   style="color: #8f794e; text-decoration: none;">
+					Scopri di più ↓
+				</a>
 				</div>
 
 
@@ -1908,7 +1913,7 @@
             </div>
 
             <p>
-                3 · 9 · 2027
+                3 · Settembre · 2027
             </p>
 
         </footer>
@@ -1975,7 +1980,7 @@
                 <div class="cerimonia-details">
 
                     <div class="cerimonia-date">
-                        3 · 9 · 2027
+                        3 · Settembre · 2027
                     </div>
 
                     <div class="cerimonia-time">
@@ -2079,27 +2084,70 @@
         /* =====================================================
            APRE LA PAGINA LA CERIMONIA
            ===================================================== */
+		function vaiAIntroduzione(event) {
 
-        function apriCerimonia() {
+				event.preventDefault();
 
-            document.getElementById("mainPage").style.display =
-                "none";
+				const introduzione =
+					document.getElementById("introduzione");
 
-            document.getElementById("cerimoniaPage").style.display =
-                "flex";
+				const posizione =
+					introduzione.getBoundingClientRect().top +
+					window.pageYOffset;
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+				window.scrollTo({
+					top: posizione,
+					behavior: "auto"
+				});
 
-            history.pushState(
-                { pagina: "cerimonia" },
-                "",
-                "#cerimonia"
-            );
+			}
 
-        }
+
+		function vaiASezione(event, id) {
+
+				event.preventDefault();
+
+				const sezione =
+					document.getElementById(id);
+
+				const posizione =
+					sezione.getBoundingClientRect().top +
+					window.pageYOffset;
+
+				window.scrollTo({
+					top: posizione,
+					behavior: "auto"
+				});
+
+			}
+
+		
+		
+		
+
+		function apriCerimonia() {
+
+				document.getElementById("mainPage").style.display =
+					"none";
+
+				document.getElementById("cerimoniaPage").style.display =
+					"flex";
+
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth"
+				});
+
+				history.pushState(
+					{ pagina: "cerimonia" },
+					"",
+					"#cerimonia"
+				);
+
+			}
+
+
+
 
 
         /* =====================================================
