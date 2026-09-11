@@ -1473,6 +1473,15 @@
                             <option value="4 Persone">
                                 4 persone
                             </option>
+							
+							<option value="5 Persone">
+                                5 persone
+                            </option>
+
+                            <option value="6 Persone">
+                                6 persone
+                            </option>
+
 
                         </select>
 
@@ -1594,14 +1603,16 @@
 
                         <!-- NOTE -->
 
-                        <label>
-                            C'è qualcosa che vorresti segnalarci?
-                        </label>
+                    <label id="noteLabel">
+						C'è qualcosa che vorresti segnalarci?
+					</label>
 
-                        <textarea
-                            name="note"
-                            placeholder="Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere."
-                        ></textarea>
+					<textarea
+						name="note"
+						id="noteInput"
+						placeholder="Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere."
+					></textarea>
+
 
                     </div>
 
@@ -2226,6 +2237,44 @@
             document.querySelector(
                 'select[name="persone"]'
             );
+			
+			
+			personeSelect.addEventListener(
+			"change",
+			function() {
+
+				const noteLabel =
+					document.getElementById("noteLabel");
+
+				const noteInput =
+					document.getElementById("noteInput");
+
+
+				if (
+					personeSelect.value !== "1 Persona"
+				) {
+
+					noteLabel.textContent =
+						"Nomi e cognomi degli altri partecipanti";
+
+					noteInput.placeholder =
+						"Indica qui nome e cognome delle persone che saranno con te. Puoi aggiungere eventuali altre note o richieste.";
+
+				}
+
+				else {
+
+					noteLabel.textContent =
+						"C'è qualcosa che vorresti segnalarci?";
+
+					noteInput.placeholder =
+						"Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere.";
+
+				}
+
+			}
+		);
+
 
 
         const allergieInput =
