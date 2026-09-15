@@ -1466,7 +1466,7 @@
 
 			font-family: 'Cormorant Garamond', serif;
 
-			font-size: 30px;
+			font-size: 24px;
 
 			font-weight: 500;
 
@@ -1505,6 +1505,40 @@
 
 			letter-spacing: 0.3px;
 		}
+		
+		
+		.travel-title-symbol {
+			position: absolute;
+
+			left: 20px;
+			top: 50%;
+
+			transform: translateY(-50%);
+
+			color: #b59a62;
+
+			font-family: 'Cormorant Garamond', serif;
+
+			font-size: 18px;
+
+			font-weight: 400;
+
+			line-height: 1;
+		}
+
+		.travel-panel:first-child .travel-title-symbol {
+			font-size: 16px;
+			opacity: 0.65;
+		}
+
+		.travel-panel:nth-child(2) .travel-title-symbol {
+			font-size: 17px;
+		}
+
+		.travel-panel:nth-child(3) .travel-title-symbol {
+			font-size: 18px;
+		}
+
 
 
 
@@ -1892,9 +1926,13 @@
 						class="travel-panel-button"
 						onclick="apriTravelPanel(this)"
 					>
+
+						<span class="travel-title-symbol">⌁</span>
+
 						<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
 							Dalla cerimonia al ricevimento
 						</span>
+
 
 						<span>
 							+
@@ -1946,9 +1984,14 @@
 				class="travel-panel-button"
 				onclick="apriTravelPanel(this)"
 			>
-				<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
-					Arrivare direttamente in auto
-				</span>
+
+			<span class="travel-title-symbol">◇</span>
+
+			<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
+				Arrivare direttamente in auto
+			</span>
+
+
 
 				<span>
 					+
@@ -2047,9 +2090,14 @@
 						class="travel-panel-button"
 						onclick="apriTravelPanel(this)"
 					>
+
+						<span class="travel-title-symbol">⟡</span>
+
 						<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
 							Arrivare in treno
 						</span>
+
+
 
 						<span>
 							+
