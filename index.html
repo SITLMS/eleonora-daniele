@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Eleonora & Daniele — 3 Settembre 2027</title>
+    <title>Eleonora & Daniele — 3 Settembre 2027</title
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1323,8 +1323,189 @@
         }
 
 		
-		
-		
+		   /* =====================================================
+           COME ARRIVARE — PANNELLI A COMPARSA
+           ===================================================== */
+		   
+		   
+		   .travel-panel-content > .travel-subtitle {
+				text-align: center;
+				font-size: 27px;
+				color: #37382f;
+				margin-top: 32px;
+				margin-bottom: 18px;
+			}
+
+			.travel-panel-content > .travel-subtitle:first-child {
+				margin-top: 0;
+			}
+
+
+        .travel-options {
+            max-width: 650px;
+            margin: 40px auto 0;
+        }
+
+        .travel-panel {
+            margin-bottom: 12px;
+
+            border: 1px solid rgba(180,150,90,0.25);
+
+            background: rgba(255,255,255,0.45);
+
+            text-align: left;
+        }
+
+
+		.travel-panel-button > span:last-child {
+			position: absolute;
+
+			right: 20px;
+
+			color: #b59a62;
+
+			font-family: 'Montserrat', sans-serif;
+
+			font-size: 16px;
+
+			transition: transform 0.3s ease;
+		}
+
+
+
+
+
+		.travel-panel.open
+		.travel-panel-button > span:last-child {
+			transform: rotate(45deg);
+		}
+
+		.travel-panel-button {
+			width: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			position: relative;
+
+			padding: 20px 50px;
+
+			border: none;
+
+			background: transparent;
+
+			color: #37382f;
+
+			font-family: 'Cormorant Garamond', serif;
+
+			font-size: 27px;
+
+			text-align: center;
+
+			cursor: pointer;
+		}
+
+
+
+
+        .travel-panel-content {
+            display: none;
+
+            padding: 0 25px 25px;
+
+            color: #5d594c;
+
+            font-size: 13px;
+
+            line-height: 1.85;
+        }
+
+        .travel-panel.open
+        .travel-panel-content {
+            display: block;
+
+            animation: fadeIn 0.4s ease;
+        }
+
+		.travel-subtitle {
+			margin-top: 22px;
+			margin-bottom: 8px;
+
+			font-family: 'Cormorant Garamond', serif;
+
+			font-size: 17px;
+
+			font-weight: 500;
+
+			color: #8f794e;
+
+			text-align: left;
+
+			letter-spacing: 0.3px;
+		}
+
+
+
+
+
+        .travel-subtitle:first-child {
+            margin-top: 0;
+        }
+
+		.travel-panel .map-button {
+			display: block;
+
+			width: fit-content;
+
+			margin: 30px auto 5px;
+		}
+
+		.travel-main-title {
+			text-align: center;
+
+			font-family: 'Cormorant Garamond', serif;
+
+			font-size: 30px;
+
+			font-weight: 500;
+
+			color: #37382f;
+
+			margin-top: 32px;
+			margin-bottom: 20px;
+
+			border-bottom: 1px solid rgba(180,150,90,0.20);
+
+			padding-bottom: 12px;
+		}
+
+		.travel-main-title:first-child {
+			margin-top: 0;
+		}
+
+
+		/* =====================================================
+		   TITOLI SECONDARI — COME ARRIVARE
+		   ===================================================== */
+
+		.travel-panel-content .travel-subtitle {
+			text-align: left !important;
+
+			font-family: 'Cormorant Garamond', serif !important;
+
+			font-size: 22px !important;
+
+			font-weight: 500;
+
+			color: #8f794e !important;
+
+			margin-top: 22px;
+			margin-bottom: 8px;
+
+			letter-spacing: 0.3px;
+		}
+
 
 
         /* =====================================================
@@ -1675,165 +1856,177 @@
              =================================================
              ================================================= -->
 			 
-			 <section id="come-arrivare">
-
-    <div class="section-label">
-        Informazioni utili
-    </div>
-
-    <h2>
-        Come arrivare
-    </h2>
-
-    <div class="divider"></div>
-
-
-    <!-- =========================================
-         CERIMONIA
-         ========================================= -->
-
-    <div style="margin-top: 40px;">
-
-        <h3 style="font-size: 30px; margin-bottom: 12px;">
-            Per la cerimonia
-        </h3>
-
-        <p>
-            Per raggiungere la cerimonia a Porto Venere
-            potete arrivare comodamente in auto oppure
-            utilizzare il treno fino a La Spezia.
-        </p>
-
-
-        <div style="margin-top: 25px;">
-
-            <h4 style="font-size: 20px; margin-bottom: 8px;">
-                In auto
-            </h4>
-
-            <p>
-                Dall'autostrada A12 Genova–Livorno oppure
-                A15 La Spezia–Parma, uscita
-                <strong>La Spezia</strong>.
-                Da qui si prosegue verso Porto Venere
-                per circa 15 km.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Nei prossimi mesi inseriremo qui anche
-                le indicazioni per i parcheggi consigliati.
-            </p>
-
-        </div>
-
-
-        <div style="margin-top: 25px;">
-
-            <h4 style="font-size: 20px; margin-bottom: 8px;">
-                In treno
-            </h4>
-
-            <p>
-                La stazione di riferimento è
-                <strong>La Spezia Centrale</strong>.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Dalla stazione è possibile proseguire
-                verso Porto Venere con il servizio
-                di autobus ATC, linea 11/P.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Il collegamento arriva direttamente
-                a Porto Venere, evitando la necessità
-                di utilizzare l'auto.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================
-         RICEVIMENTO
-         ========================================= -->
-
-    <div style="margin-top: 50px;">
-
-        <h3 style="font-size: 30px; margin-bottom: 12px;">
-            Per il ricevimento
-        </h3>
-
-        <p>
-            Il ricevimento si terrà presso
-            <strong>Locanda de' Banchieri</strong>,
-            in Via Porredo 32, Fosdinovo (MS).
-        </p>
-
-
-        <div style="margin-top: 25px;">
-
-            <h4 style="font-size: 20px; margin-bottom: 8px;">
-                In auto
-            </h4>
-
-            <p>
-                Arrivando da nord, l'uscita autostradale
-                di riferimento è <strong>Sarzana</strong>.
-                Da qui si prosegue in direzione
-                Caniparola e Fosdinovo.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Arrivando da sud, è possibile uscire a
-                <strong>Carrara</strong> e proseguire poi
-                verso Sarzana e Fosdinovo.
-            </p>
-
-        </div>
-
-
-        <div style="margin-top: 25px;">
-
-            <h4 style="font-size: 20px; margin-bottom: 8px;">
-                In treno
-            </h4>
-
-            <p>
-                La stazione di riferimento è
-                <strong>Sarzana</strong>.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Dalla stazione è possibile proseguire
-                verso la Locanda de' Banchieri,
-                in direzione Fosdinovo e Caniparola.
-            </p>
-
-        </div>
-
-
-        <p style="margin-top: 20px;">
-            Presso la struttura è disponibile un
-            <strong>parcheggio privato gratuito</strong>.
-        </p>
-
-    </div>
-
-
-    <p style="margin-top: 45px; font-size: 12px; color: #777263;">
-
-        Le indicazioni potranno essere aggiornate
-        più avanti con eventuali informazioni aggiuntive
-        su parcheggi, collegamenti e soggiorno.
-
-    </p>
-
-</section>
 
 
 
+		<section id="come-arrivare">
+
+			<div class="section-label">
+				Informazioni utili
+			</div>
+
+			<h2>
+				Come arrivare
+			</h2>
+
+			<div class="divider"></div>
+
+			<p style="max-width: 600px; margin: 0 auto;">
+				Abbiamo raccolto qui le principali indicazioni
+				per gli spostamenti della giornata.
+				Aprite solo le informazioni che vi interessano.
+			</p>
+
+
+			<div class="travel-options">
+
+
+				<!-- =========================================
+					 DALLA CERIMONIA AL RICEVIMENTO
+					 ========================================= -->
+
+				<div class="travel-panel open">
+
+					<button
+						type="button"
+						class="travel-panel-button"
+						onclick="apriTravelPanel(this)"
+					>
+						<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
+							Dalla cerimonia al ricevimento
+						</span>
+
+						<span>
+							+
+						</span>
+
+					</button>
+
+
+					<div class="travel-panel-content">
+
+						<p>
+							Per chi proseguirà direttamente dalla
+							<strong>Chiesa di San Pietro</strong>
+							al ricevimento, il tragitto in auto verso la
+							<strong>Locanda de' Banchieri</strong>
+							richiede indicativamente circa
+							<strong>40–45 minuti</strong>.
+						</p>
+
+						<p style="margin-top: 15px;">
+							Da Porto Venere si procede in direzione
+							<strong>La Spezia</strong>, quindi verso
+							<strong>Sarzana e Caniparola</strong>,
+							seguendo infine le indicazioni per
+							<strong>Fosdinovo</strong>.
+						</p>
+
+						<a
+							class="map-button"
+							href="https://www.google.com/maps/dir/?api=1&origin=Chiesa+di+San+Pietro,+Piazzale+San+Pietro,+Porto+Venere&destination=Locanda+de%27+Banchieri,+Via+Porredo+32,+54035+Fosdinovo+MS"
+							target="_blank"
+							rel="noopener"
+						>
+							✦ &nbsp; Indicazioni stradali
+						</a>
+
+					</div>
+
+				</div>
+
+
+				<!-- =========================================
+					 ARRIVARE DIRETTAMENTE IN AUTO
+					 ========================================= -->
+					 
+					 <div class="travel-panel">
+			<button
+				type="button"
+				class="travel-panel-button"
+				onclick="apriTravelPanel(this)"
+			>
+				<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
+					Arrivare direttamente in auto
+				</span>
+
+				<span>
+					+
+				</span>
+
+			</button>
+
+
+			<div class="travel-panel-content">
+
+
+				<div class="travel-main-title">
+					Per la cerimonia
+				</div>
+
+
+				<div class="travel-subtitle">
+					Arrivando da nord
+				</div>
+
+				<p>
+					L'uscita autostradale di riferimento è
+					<strong>Sarzana</strong>.
+					Da qui si prosegue in direzione
+					<strong>La Spezia e Porto Venere</strong>.
+				</p>
+
+
+				<div class="travel-subtitle">
+					Arrivando da sud
+				</div>
+
+				<p>
+					È possibile uscire a
+					<strong>Carrara</strong>
+					e proseguire poi in direzione
+					<strong>La Spezia e Porto Venere</strong>.
+				</p>
+
+
+				<div class="travel-main-title">
+					Per il ricevimento
+				</div>
+
+
+				<div class="travel-subtitle">
+					Arrivando da nord
+				</div>
+
+				<p>
+					L'uscita autostradale di riferimento è
+					<strong>Sarzana</strong>.
+					Da qui si prosegue in direzione
+					<strong>Caniparola e Fosdinovo</strong>.
+				</p>
+
+
+				<div class="travel-subtitle">
+					Arrivando da sud
+				</div>
+
+				<p>
+					È possibile uscire a
+					<strong>Carrara</strong>
+					e proseguire poi verso
+					<strong>Sarzana e Fosdinovo</strong>.
+				</p>
+
+
+				<p style="margin-top: 20px;">
+					Presso la struttura è disponibile un
+					<strong>parcheggio privato gratuito</strong>.
+				</p>
+
+
+			</div>
+
+			</div>
 
 
 
@@ -1843,7 +2036,94 @@
 
 
 
-			</section>
+				<!-- =========================================
+					 ARRIVARE IN TRENO
+					 ========================================= -->
+
+				<div class="travel-panel">
+
+					<button
+						type="button"
+						class="travel-panel-button"
+						onclick="apriTravelPanel(this)"
+					>
+						<span style="color: #37382f; font-family: 'Cormorant Garamond', serif; font-size: 24px;">
+							Arrivare in treno
+						</span>
+
+						<span>
+							+
+						</span>
+
+					</button>
+
+
+					<div class="travel-panel-content">
+
+						<div class="travel-subtitle">
+							Per la cerimonia
+						</div>
+
+						<p>
+							La stazione di riferimento è
+							<strong>La Spezia Centrale</strong>.
+						</p>
+
+						<p style="margin-top: 15px;">
+							Dalla stazione è possibile proseguire
+							verso Porto Venere con il servizio
+							di autobus ATC, linea 11/P.
+						</p>
+
+						<p style="margin-top: 15px;">
+							Il collegamento arriva direttamente
+							a Porto Venere, evitando la necessità
+							di utilizzare l'auto.
+						</p>
+
+
+						<div class="travel-subtitle">
+							Per il ricevimento
+						</div>
+
+						<p>
+							La stazione di riferimento è
+							<strong>Sarzana</strong>.
+						</p>
+
+						<p style="margin-top: 15px;">
+							Dalla stazione è possibile proseguire
+							verso la Locanda de' Banchieri,
+							in direzione Fosdinovo e Caniparola.
+						</p>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+			<p style="margin-top: 40px; font-size: 12px; color: #777263;">
+
+				Le indicazioni potranno essere aggiornate
+				più avanti con eventuali informazioni aggiuntive
+				su parcheggi, collegamenti e soggiorno.
+
+			</p>
+
+		</section>
+
+
+
+
+
+
+
+
+
+
 
 			 
 			 
@@ -2855,6 +3135,18 @@
             "hashchange",
             controllaPagina
         );
+        /* =====================================================
+           PANNELLI COME ARRIVARE
+           ===================================================== */
+
+        function apriTravelPanel(button) {
+
+            const pannello =
+                button.parentElement;
+
+            pannello.classList.toggle("open");
+
+        }
 
 
         /* =====================================================
