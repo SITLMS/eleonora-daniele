@@ -3720,165 +3720,143 @@
            INVIO RSVP
            ===================================================== */
 
-        form.addEventListener(
-            "submit",
-            async function(event) {
+			   form.addEventListener(
+				"submit",
+				async function(event) {
 
-                event.preventDefault();
+					event.preventDefault();
 
+					const presenza =
+						document.querySelector(
+							'input[name="presenza"]:checked'
+						);
 
-                const presenza =
-                    document.querySelector(
-                        'input[name="presenza"]:checked'
-                    );
+					if (!presenza) {
 
+						alert(
+							"Seleziona se parteciperai oppure no."
+						);
 
-                if (!presenza) {
+						return;
+					}
 
-                    alert(
-                        "Seleziona se parteciperai oppure no."
-                    );
+					submitButton.disabled = true;
+					submitButton.textContent = "Invio in corso...";
 
-                    return;
+					const formData = new FormData(form);
 
-                }
+					const nomeInserito =
+						formData.get("nome") || "";
 
+					const personeInserite =
+						formData.get("persone") || "1 Persona";
 
-                submitButton.disabled =
-                    true;
 
+					/*
+					 * INVIO A GOOGLE APPS SCRIPT
+					 *
+					 * La risposta non viene letta perché utilizziamo
+					 * mode: "no-cors".
+					 */
 
-                submitButton.textContent =
-                    "Invio in corso...";
+					try {
 
+						fetch(
+							RSVP_URL,
+							{
+								method: "POST",
+								body: formData,
+								mode: "no-cors"
+							}
+						);
 
-                const formData =
-                    new FormData(form);
+					} catch (errore) {
 
+						console.warn(
+							"Errore nell'avvio dell'invio:",
+							errore
+						);
 
-                const nomeInserito =
-                    formData.get("nome") || "";
+					}
 
 
-                const personeInserite =
-                    formData.get("persone") || "1 Persona";
 
+					/*
+					 * DA QUI IN POI CONSIDERIAMO L'RSVP INVIATO.
+					 */
 
-                try {
+					localStorage.setItem(
+						"eleonoraDanieleRSVPNome",
+						nomeInserito
+					);
 
 
-                    await fetch(
+					/* RISPOSTA NEGATIVA */
 
-                        RSVP_URL,
+					if (
+						presenza.value ===
+						"Purtroppo non potrò esserci"
+					) {
 
-                        {
+						localStorage.setItem(
+							"eleonoraDanieleRSVP",
+							"no"
+						);
 
-                            method: "POST",
+						localStorage.removeItem(
+							"eleonoraDanieleRSVPPersone"
+						);
 
-                            body: formData,
+						mostraConferma(
+							"no",
+							nomeInserito,
+							""
+						);
 
-                            mode: "no-cors"
+					}
 
-                        }
 
-                    );
+					/* RISPOSTA POSITIVA */
 
+					else {
 
-                    /* SALVA IL NOME */
+						localStorage.setItem(
+							"eleonoraDanieleRSVP",
+							"si"
+						);
 
-                    localStorage.setItem(
-                        "eleonoraDanieleRSVPNome",
-                        nomeInserito
-                    );
+						localStorage.setItem(
+							"eleonoraDanieleRSVPPersone",
+							personeInserite
+						);
 
+						mostraConferma(
+							"si",
+							nomeInserito,
+							personeInserite
+						);
 
-                    /* RISPOSTA NEGATIVA */
+					}
 
-                    if (
-                        presenza.value ===
-                        "Purtroppo non potrò esserci"
-                    ) {
 
-                        localStorage.setItem(
-                            "eleonoraDanieleRSVP",
-                            "no"
-                        );
+					/*
+					 * PORTA LA CONFERMA AL CENTRO
+					 */
 
+					successMessage.scrollIntoView({
 
-                        localStorage.removeItem(
-                            "eleonoraDanieleRSVPPersone"
-                        );
+						behavior: "smooth",
 
+						block: "center"
 
-                        mostraConferma(
-                            "no",
-                            nomeInserito,
-                            ""
-                        );
+					});
 
-                    }
+				}
+			);
 
-
-                    /* RISPOSTA POSITIVA */
-
-                    else {
-
-                        localStorage.setItem(
-                            "eleonoraDanieleRSVP",
-                            "si"
-                        );
-
-
-                        localStorage.setItem(
-                            "eleonoraDanieleRSVPPersone",
-                            personeInserite
-                        );
-
-
-                        mostraConferma(
-                            "si",
-                            nomeInserito,
-                            personeInserite
-                        );
-
-                    }
-
-
-                    /* PORTA LA CONFERMA AL CENTRO */
-
-                    successMessage.scrollIntoView({
-
-                        behavior: "smooth",
-
-                        block: "center"
-
-                    });
-
-
-                }
-
-
-                catch (errore) {
-
-                    console.error(errore);
-
-
-                    submitButton.disabled =
-                        false;
-
-
-                    submitButton.textContent =
-                        "Riprova";
-
-
-                    alert(
-                        "Si è verificato un problema durante l'invio. Riprova."
-                    );
-
-                }
-
-            }
-        );
+   
+   
+   
 
 
         /* =====================================================
