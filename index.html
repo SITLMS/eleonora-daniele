@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+tutto <!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -368,36 +368,51 @@
             margin: 0;
         }
 
-        .submit-button {
-            width: 100%;
+			
+			
+			.submit-button {
+			width: 100%;
+			padding: 15px;
 
-            padding: 15px;
+			background: transparent;
+			border: 1px solid #a88d58;
+			color: #a88d58;
 
-            background: #a88d58;
+			text-transform: uppercase;
+			letter-spacing: 2px;
 
-            border: none;
+			cursor: pointer;
 
-            color: white;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 11px;
 
-            text-transform: uppercase;
-            letter-spacing: 2px;
+			transition: 0.3s;
+		}
 
-            cursor: pointer;
+		.submit-button.ready {
+			background: #a88d58 !important;
+			border-color: #a88d58 !important;
+			color: white !important;
+		}
 
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
+		.submit-button.ready:hover {
+			background: #8f7648 !important;
+		}
 
-            transition: 0.3s;
-        }
+			
+			
+			
+			
+			
+			
+			
+			
 
-        .submit-button:hover {
-            background: #8f7648;
-        }
+		.submit-button:disabled {
+			opacity: 0.6;
+			cursor: wait;
+		}
 
-        .submit-button:disabled {
-            opacity: 0.6;
-            cursor: wait;
-        }
 
         .form-note {
             margin-top: 15px;
@@ -2990,6 +3005,10 @@
     <script>
 
 
+
+
+
+
         /* =====================================================
            APRE LA PAGINA LA CERIMONIA
            ===================================================== */
@@ -3119,8 +3138,33 @@
 
 
         /* =====================================================
-           CONTROLLA QUALE PAGINA MOSTRARE
+           checkFormValidity
            ===================================================== */
+			const form = document.getElementById("rsvpForm");
+			const submitButton = document.getElementById("submitButton");
+
+			function checkFormValidity() {
+				const nome = form.querySelector('input[name="nome"]');
+				const presenza = form.querySelector('input[name="presenza"]:checked');
+
+				if (
+					nome.value.trim() !== "" &&
+					presenza !== null
+				) {
+					submitButton.classList.add("ready");
+				} else {
+					submitButton.classList.remove("ready");
+				}
+			}
+
+			form.addEventListener("input", checkFormValidity);
+			form.addEventListener("change", checkFormValidity);
+
+			checkFormValidity();
+
+		 
+		 
+		 
         /* =====================================================
            CONTROLLA QUALE PAGINA MOSTRARE
            ===================================================== */
@@ -3714,6 +3758,8 @@
 		  
 		  
 		  
+		  
+		  
   
 
         /* =====================================================
@@ -3759,25 +3805,15 @@
 					 * mode: "no-cors".
 					 */
 
-					try {
+					void fetch(
+						RSVP_URL,
+						{
+							method: "POST",
+							body: formData,
+							mode: "no-cors"
+						}
+					);
 
-						fetch(
-							RSVP_URL,
-							{
-								method: "POST",
-								body: formData,
-								mode: "no-cors"
-							}
-						);
-
-					} catch (errore) {
-
-						console.warn(
-							"Errore nell'avvio dell'invio:",
-							errore
-						);
-
-					}
 
 
 
@@ -3857,6 +3893,10 @@
    
    
    
+   
+   
+   
+   
 
 
         /* =====================================================
@@ -3869,6 +3909,34 @@
 
 
     </script>
+	
+	<script>
+		const form = document.getElementById("rsvpForm");
+		const submitButton = document.getElementById("submitButton");
+
+		function checkForm() {
+
+			const nome = form.querySelector('input[name="nome"]');
+			const presenza = form.querySelector('input[name="presenza"]:checked');
+
+			console.log("Nome:", nome.value);
+			console.log("Presenza:", presenza);
+			
+			if (nome.value.trim() !== "" && presenza !== null) {
+				submitButton.classList.add("ready");
+				console.log("PULSANTE ORO");
+			} else {
+				submitButton.classList.remove("ready");
+				console.log("PULSANTE BORDO");
+			}
+		}
+
+		form.addEventListener("input", checkForm);
+		form.addEventListener("change", checkForm);
+
+		checkForm();
+	</script>
+
 
 
 </body>
