@@ -1,4 +1,4 @@
-tutto <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -2287,7 +2287,8 @@ tutto <!DOCTYPE html>
 
                     <!-- CAMPI PARTECIPAZIONE -->
 
-                    <div id="campiPartecipazione">
+                   <!--<div id="campiPartecipazione" style="display: none;">   con Style alla partenza nasconde -->
+                   <div id="campiPartecipazione" style="display: none;">
 
 
                         <!-- PERSONE -->
@@ -2993,126 +2994,811 @@ tutto <!DOCTYPE html>
 
 	
 	
+```html
+<!-- =====================================================
+     =====================================================
+     SEZIONE 10 — JAVASCRIPT / NAVIGAZIONE
+     =====================================================
+     ===================================================== -->
+
+<script>
+
+    /* =====================================================
+       APRE LA PAGINA LA CERIMONIA
+       ===================================================== */
+
+    function vaiAIntroduzione(event) {
+
+        event.preventDefault();
+
+        const introduzione =
+            document.getElementById("introduzione");
+
+        const posizione =
+            introduzione.getBoundingClientRect().top +
+            window.pageYOffset;
+
+        window.scrollTo({
+            top: posizione,
+            behavior: "auto"
+        });
+    }
 
 
+    function vaiASezione(event, id) {
 
-    <!-- =====================================================
-         =====================================================
-         SEZIONE 10 — JAVASCRIPT / NAVIGAZIONE
-         =====================================================
-         ===================================================== -->
+        event.preventDefault();
 
-    <script>
+        const sezione =
+            document.getElementById(id);
 
+        const posizione =
+            sezione.getBoundingClientRect().top +
+            window.pageYOffset;
 
-
-
-
-
-        /* =====================================================
-           APRE LA PAGINA LA CERIMONIA
-           ===================================================== */
-		function vaiAIntroduzione(event) {
-
-				event.preventDefault();
-
-				const introduzione =
-					document.getElementById("introduzione");
-
-				const posizione =
-					introduzione.getBoundingClientRect().top +
-					window.pageYOffset;
-
-				window.scrollTo({
-					top: posizione,
-					behavior: "auto"
-				});
-
-			}
+        window.scrollTo({
+            top: posizione,
+            behavior: "auto"
+        });
+    }
 
 
-		function vaiASezione(event, id) {
+    function apriCerimonia() {
 
-				event.preventDefault();
+        document.getElementById("mainPage").style.display =
+            "none";
 
-				const sezione =
-					document.getElementById(id);
+        document.getElementById("cerimoniaPage").style.display =
+            "flex";
 
-				const posizione =
-					sezione.getBoundingClientRect().top +
-					window.pageYOffset;
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-				window.scrollTo({
-					top: posizione,
-					behavior: "auto"
-				});
-
-			}
-
-		
-		
-		
-
-		function apriCerimonia() {
-
-				document.getElementById("mainPage").style.display =
-					"none";
-
-				document.getElementById("cerimoniaPage").style.display =
-					"flex";
-
-				window.scrollTo({
-					top: 0,
-					behavior: "smooth"
-				});
-
-				history.pushState(
-					{ pagina: "cerimonia" },
-					"",
-					"#cerimonia"
-				);
-
-			}
+        history.pushState(
+            { pagina: "cerimonia" },
+            "",
+            "#cerimonia"
+        );
+    }
 
 
-        /* =====================================================
-           APRE LA PAGINA IL RICEVIMENTO
-           ===================================================== */
+    /* =====================================================
+       APRE LA PAGINA IL RICEVIMENTO
+       ===================================================== */
 
-        function apriRicevimento() {
+    function apriRicevimento() {
+
+        document.getElementById("mainPage").style.display =
+            "none";
+
+        document.getElementById("ricevimentoPage").style.display =
+            "flex";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        history.pushState(
+            { pagina: "ricevimento" },
+            "",
+            "#ricevimento"
+        );
+    }
+
+
+    /* =====================================================
+       TORNA ALL'INVITO
+       ===================================================== */
+
+    function tornaAllInvito(event) {
+
+        if (event) {
+            event.preventDefault();
+        }
+
+        document.getElementById("cerimoniaPage").style.display =
+            "none";
+
+        document.getElementById("ricevimentoPage").style.display =
+            "none";
+
+        document.getElementById("mainPage").style.display =
+            "block";
+
+        history.pushState(
+            { pagina: "principale" },
+            "",
+            window.location.pathname
+        );
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    /* =====================================================
+       SEZIONE 11 — RSVP
+       ===================================================== */
+
+    const RSVP_URL =
+        "https://script.google.com/macros/s/AKfycbzrwWGD_MwH_LtOigXzLjsStvL7IvkT6AxniF32qk-_ObtnmVZcYHrA4aqXdQGWgKbF/exec";
+
+
+    /* =====================================================
+       ELEMENTI DEL FORM
+       ===================================================== */
+
+    const form =
+        document.getElementById("rsvpForm");
+
+    const campiPartecipazione =
+        document.getElementById("campiPartecipazione");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const successTitle =
+        document.getElementById("successTitle");
+
+    const successText =
+        document.getElementById("successText");
+
+    const presenzaInputs =
+        document.querySelectorAll(
+            'input[name="presenza"]'
+        );
+
+    const personeSelect =
+        document.querySelector(
+            'select[name="persone"]'
+        );
+
+    const allergieInput =
+        document.querySelector(
+            'input[name="allergie"]'
+        );
+
+    const noteInput =
+        document.querySelector(
+            'textarea[name="note"]'
+        );
+
+    const alimentazioneInputs =
+        document.querySelectorAll(
+            'input[name="alimentazione"]'
+        );
+
+    const nessunaAlimentazione =
+        document.getElementById(
+            "nessunaAlimentazione"
+        );
+
+    const allergieBox =
+        document.getElementById("allergieBox");
+
+
+    /* =====================================================
+       CAMBIO COLORE PULSANTE INVIO
+       Il pulsante diventa "ready" quando:
+       - il nome è compilato
+       - è stata scelta una risposta alla presenza
+       ===================================================== */
+
+    function checkFormValidity() {
+
+        const nome =
+            form.querySelector(
+                'input[name="nome"]'
+            );
+
+        const presenza =
+            form.querySelector(
+                'input[name="presenza"]:checked'
+            );
+
+
+        if (
+            nome &&
+            nome.value.trim() !== "" &&
+            presenza !== null
+        ) {
+
+            submitButton.classList.add("ready");
+
+        }
+
+        else {
+
+            submitButton.classList.remove("ready");
+
+        }
+    }
+
+
+    form.addEventListener(
+        "input",
+        checkFormValidity
+    );
+
+    form.addEventListener(
+        "change",
+        checkFormValidity
+    );
+
+
+    /* =====================================================
+       CAMBIO TESTO CAMPO NOTE IN BASE AL NUMERO DI PERSONE
+       ===================================================== */
+
+    personeSelect.addEventListener(
+        "change",
+        function() {
+
+            const noteLabel =
+                document.getElementById("noteLabel");
+
+            const noteInputElemento =
+                document.getElementById("noteInput");
+
+
+            if (
+                personeSelect.value !== "1 Persona"
+            ) {
+
+                noteLabel.textContent =
+                    "Nomi e cognomi degli altri partecipanti";
+
+                noteInputElemento.placeholder =
+                    "Indica qui nome e cognome delle persone che saranno con te. Puoi aggiungere eventuali altre note o richieste.";
+
+            }
+
+            else {
+
+                noteLabel.textContent =
+                    "C'è qualcosa che vorresti segnalarci?";
+
+                noteInputElemento.placeholder =
+                    "Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere.";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       MOSTRA / NASCONDE BOX ALLERGIE
+       ===================================================== */
+
+    function aggiornaAllergie() {
+
+        const allergieSelezionate =
+            document.querySelector(
+                'input[name="alimentazione"][value="Allergie alimentari"]'
+            );
+
+
+        if (
+            allergieSelezionate &&
+            allergieSelezionate.checked
+        ) {
+
+            allergieBox.style.display =
+                "block";
+
+        }
+
+        else {
+
+            allergieBox.style.display =
+                "none";
+
+            allergieInput.value = "";
+
+        }
+    }
+
+
+    alimentazioneInputs.forEach(
+        function(input) {
+
+            input.addEventListener(
+                "change",
+                aggiornaAllergie
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ESTRAE SOLO IL NOME
+       ===================================================== */
+
+    function estraiNomeCompleto(testo) {
+
+        const valore =
+            testo.trim().replace(/\s+/g, " ");
+
+
+        if (!valore) {
+            return "❤️";
+        }
+
+
+        const parti =
+            valore.split(" ");
+
+
+        return parti[0];
+    }
+
+
+    /* =====================================================
+       MOSTRA CONFERMA
+       ===================================================== */
+
+    function mostraConferma(
+        tipo,
+        nome,
+        numeroPersone
+    ) {
+
+        form.style.display = "none";
+
+        successMessage.style.display = "block";
+
+
+        const nomeVisualizzato =
+            estraiNomeCompleto(nome);
+
+
+        /* RISPOSTA NEGATIVA */
+
+        if (tipo === "no") {
+
+            successTitle.textContent =
+                "Grazie " +
+                nomeVisualizzato +
+                " ❤️";
+
+
+            successText.innerHTML =
+                "Abbiamo ricevuto la tua risposta.<br>" +
+                "Ci dispiace non poterti avere con noi,<br>" +
+                "ma saremo felici di averti vicino con il cuore. ❤️";
+
+        }
+
+
+        /* UNA PERSONA */
+
+        else if (
+            numeroPersone === "1 Persona"
+        ) {
+
+            successTitle.textContent =
+                "Grazie " +
+                nomeVisualizzato +
+                " ❤️";
+
+
+            successText.innerHTML =
+                "Abbiamo ricevuto la tua conferma.<br>" +
+                "Non vediamo l'ora di festeggiare insieme a te!";
+
+        }
+
+
+        /* DUE O PIÙ PERSONE */
+
+        else {
+
+            successTitle.textContent =
+                "Grazie " +
+                nomeVisualizzato +
+                " ❤️";
+
+
+            successText.innerHTML =
+                "Abbiamo ricevuto la vostra conferma.<br>" +
+                "Non vediamo l'ora di festeggiare insieme a voi!";
+
+        }
+    }
+
+
+    /* =====================================================
+       VERIFICA SE È GIÀ STATA INVIATA UNA RISPOSTA
+       ===================================================== */
+
+    function controllaRSVPSalvato() {
+
+        const rsvpInviato =
+            localStorage.getItem(
+                "eleonoraDanieleRSVP"
+            );
+
+
+        const rsvpNome =
+            localStorage.getItem(
+                "eleonoraDanieleRSVPNome"
+            );
+
+
+        const rsvpPersone =
+            localStorage.getItem(
+                "eleonoraDanieleRSVPPersone"
+            );
+
+
+        if (rsvpInviato === "si") {
+
+            mostraConferma(
+                "si",
+                rsvpNome || "",
+                rsvpPersone || "1 Persona"
+            );
+
+        }
+
+        else if (rsvpInviato === "no") {
+
+            mostraConferma(
+                "no",
+                rsvpNome || "",
+                ""
+            );
+        }
+    }
+
+
+    /* =====================================================
+       PRESENZA
+       MOSTRA / NASCONDE I CAMPI DI PARTECIPAZIONE
+       ===================================================== */
+
+    function aggiornaCampi() {
+
+        const selezionato =
+            document.querySelector(
+                'input[name="presenza"]:checked'
+            );
+
+
+        if (
+            selezionato &&
+            selezionato.value ===
+            "Purtroppo non potrò esserci"
+        ) {
+
+            /* NASCONDE I CAMPI */
+
+            campiPartecipazione.style.display =
+                "none";
+
+
+            /* RIPRISTINA I VALORI */
+
+            personeSelect.value =
+                "1 Persona";
+
+            allergieInput.value =
+                "";
+
+            noteInput.value =
+                "";
+
+
+            /* DESELEZIONA LE OPZIONI ALIMENTARI */
+
+            alimentazioneInputs.forEach(
+                function(input) {
+
+                    input.checked = false;
+
+                }
+            );
+
+
+            /* NASCONDE EVENTUALE BOX ALLERGIE */
+
+            aggiornaAllergie();
+
+        }
+
+        else {
+
+            /* MOSTRA I CAMPI */
+
+            campiPartecipazione.style.display =
+                "block";
+
+        }
+
+
+        /*
+         * Aggiorna anche il colore del pulsante.
+         * In questo modo la selezione della presenza
+         * viene immediatamente riconosciuta.
+         */
+
+        checkFormValidity();
+    }
+
+
+    presenzaInputs.forEach(
+        function(input) {
+
+            input.addEventListener(
+                "change",
+                aggiornaCampi
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ALIMENTAZIONE
+       "NESSUNA" È ESCLUSIVA
+       ===================================================== */
+
+    alimentazioneInputs.forEach(
+        function(input) {
+
+            input.addEventListener(
+                "change",
+                function() {
+
+
+                    if (
+                        input ===
+                        nessunaAlimentazione &&
+                        input.checked
+                    ) {
+
+                        alimentazioneInputs.forEach(
+                            function(altra) {
+
+                                if (
+                                    altra !==
+                                    nessunaAlimentazione
+                                ) {
+
+                                    altra.checked =
+                                        false;
+
+                                }
+
+                            }
+                        );
+
+
+                        aggiornaAllergie();
+
+                    }
+
+
+                    else if (
+                        input !==
+                        nessunaAlimentazione &&
+                        input.checked
+                    ) {
+
+                        nessunaAlimentazione.checked =
+                            false;
+
+
+                        aggiornaAllergie();
+
+                    }
+
+
+                    else {
+
+                        aggiornaAllergie();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       INVIO RSVP
+       ===================================================== */
+
+    form.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const presenza =
+                document.querySelector(
+                    'input[name="presenza"]:checked'
+                );
+
+
+            if (!presenza) {
+
+                alert(
+                    "Seleziona se parteciperai oppure no."
+                );
+
+                return;
+            }
+
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "Invio in corso...";
+
+
+            const formData =
+                new FormData(form);
+
+
+            const nomeInserito =
+                formData.get("nome") || "";
+
+
+            const personeInserite =
+                formData.get("persone") ||
+                "1 Persona";
+
+
+            /* =================================================
+               INVIO A GOOGLE APPS SCRIPT
+               ================================================= */
+
+            void fetch(
+                RSVP_URL,
+                {
+                    method: "POST",
+                    body: formData,
+                    mode: "no-cors"
+                }
+            );
+
+
+            /* =================================================
+               SALVA IL NOME
+               ================================================= */
+
+            localStorage.setItem(
+                "eleonoraDanieleRSVPNome",
+                nomeInserito
+            );
+
+
+            /* =================================================
+               RISPOSTA NEGATIVA
+               ================================================= */
+
+            if (
+                presenza.value ===
+                "Purtroppo non potrò esserci"
+            ) {
+
+                localStorage.setItem(
+                    "eleonoraDanieleRSVP",
+                    "no"
+                );
+
+
+                localStorage.removeItem(
+                    "eleonoraDanieleRSVPPersone"
+                );
+
+
+                mostraConferma(
+                    "no",
+                    nomeInserito,
+                    ""
+                );
+
+            }
+
+
+            /* =================================================
+               RISPOSTA POSITIVA
+               ================================================= */
+
+            else {
+
+                localStorage.setItem(
+                    "eleonoraDanieleRSVP",
+                    "si"
+                );
+
+
+                localStorage.setItem(
+                    "eleonoraDanieleRSVPPersone",
+                    personeInserite
+                );
+
+
+                mostraConferma(
+                    "si",
+                    nomeInserito,
+                    personeInserite
+                );
+
+            }
+
+
+            /* =================================================
+               PORTA LA CONFERMA AL CENTRO
+               ================================================= */
+
+            successMessage.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }
+    );
+
+
+    /* =====================================================
+       CONTROLLA QUALE PAGINA MOSTRARE
+       ===================================================== */
+
+    function controllaPagina() {
+
+        if (
+            window.location.hash === "#cerimonia"
+        ) {
 
             document.getElementById("mainPage").style.display =
+                "none";
+
+            document.getElementById("cerimoniaPage").style.display =
+                "flex";
+
+            document.getElementById("ricevimentoPage").style.display =
+                "none";
+
+        }
+
+        else if (
+            window.location.hash === "#ricevimento"
+        ) {
+
+            document.getElementById("mainPage").style.display =
+                "none";
+
+            document.getElementById("cerimoniaPage").style.display =
                 "none";
 
             document.getElementById("ricevimentoPage").style.display =
                 "flex";
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-            history.pushState(
-                { pagina: "ricevimento" },
-                "",
-                "#ricevimento"
-            );
-
         }
 
+        else {
 
-
-        /* =====================================================
-           TORNA ALL'INVITO
-           ===================================================== */
-
-     
-
-        function tornaAllInvito(event) {
-
-            if (event) {
-                event.preventDefault();
-            }
+            document.getElementById("mainPage").style.display =
+                "block";
 
             document.getElementById("cerimoniaPage").style.display =
                 "none";
@@ -3120,822 +3806,128 @@ tutto <!DOCTYPE html>
             document.getElementById("ricevimentoPage").style.display =
                 "none";
 
-            document.getElementById("mainPage").style.display =
+        }
+    }
+
+
+    window.addEventListener(
+        "popstate",
+        controllaPagina
+    );
+
+
+    window.addEventListener(
+        "hashchange",
+        controllaPagina
+    );
+
+
+    /* =====================================================
+       PANNELLI COME ARRIVARE
+       ===================================================== */
+
+    function apriTravelPanel(button) {
+
+        const pannello =
+            button.parentElement;
+
+        pannello.classList.toggle("open");
+    }
+
+
+    /* =====================================================
+       MOSTRA / NASCONDE "UN PENSIERO PER NOI"
+       ===================================================== */
+
+    function mostraPensiero() {
+
+        const dettagli =
+            document.getElementById("giftDetails");
+
+        const pulsante =
+            document.getElementById("giftToggleButton");
+
+
+        if (
+            dettagli.style.display === "block"
+        ) {
+
+            dettagli.style.display =
+                "none";
+
+            pulsante.textContent =
+                "Scopri le possibilità";
+
+        }
+
+        else {
+
+            dettagli.style.display =
                 "block";
 
-            history.pushState(
-                { pagina: "principale" },
-                "",
-                window.location.pathname
+            pulsante.textContent =
+                "Nascondi dettagli";
+
+        }
+    }
+
+
+    /* =====================================================
+       COPIA IBAN
+       ===================================================== */
+
+    function copiaIBAN() {
+
+        const iban =
+            document.getElementById(
+                "ibanValue"
+            ).textContent.trim();
+
+
+        if (
+            iban === "IBAN DA INSERIRE"
+        ) {
+
+            alert(
+                "L'IBAN non è ancora stato inserito."
             );
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
+            return;
         }
 
 
-        /* =====================================================
-           checkFormValidity
-           ===================================================== */
-			const form = document.getElementById("rsvpForm");
-			const submitButton = document.getElementById("submitButton");
-
-			function checkFormValidity() {
-				const nome = form.querySelector('input[name="nome"]');
-				const presenza = form.querySelector('input[name="presenza"]:checked');
-
-				if (
-					nome.value.trim() !== "" &&
-					presenza !== null
-				) {
-					submitButton.classList.add("ready");
-				} else {
-					submitButton.classList.remove("ready");
-				}
-			}
-
-			form.addEventListener("input", checkFormValidity);
-			form.addEventListener("change", checkFormValidity);
-
-			checkFormValidity();
-
-		 
-		 
-		 
-        /* =====================================================
-           CONTROLLA QUALE PAGINA MOSTRARE
-           ===================================================== */
-
-        function controllaPagina() {
-
-            if (
-                window.location.hash === "#cerimonia"
-            ) {
-
-                document.getElementById("mainPage").style.display =
-                    "none";
-
-                document.getElementById("cerimoniaPage").style.display =
-                    "flex";
-
-                document.getElementById("ricevimentoPage").style.display =
-                    "none";
-
-            }
-
-            else if (
-                window.location.hash === "#ricevimento"
-            ) {
-
-                document.getElementById("mainPage").style.display =
-                    "none";
-
-                document.getElementById("cerimoniaPage").style.display =
-                    "none";
-
-                document.getElementById("ricevimentoPage").style.display =
-                    "flex";
-
-            }
-
-            else {
-
-                document.getElementById("mainPage").style.display =
-                    "block";
-
-                document.getElementById("cerimoniaPage").style.display =
-                    "none";
-
-                document.getElementById("ricevimentoPage").style.display =
-                    "none";
-
-            }
-
-        }
-
-
-
-        window.addEventListener(
-            "popstate",
-            controllaPagina
-        );
-
-
-        window.addEventListener(
-            "hashchange",
-            controllaPagina
-        );
-        /* =====================================================
-           PANNELLI COME ARRIVARE
-           ===================================================== */
-
-        function apriTravelPanel(button) {
-
-            const pannello =
-                button.parentElement;
-
-            pannello.classList.toggle("open");
-
-        }
-
-
-        /* =====================================================
-           MOSTRA / NASCONDE "UN PENSIERO PER NOI"
-           ===================================================== */
-
-        function mostraPensiero() {
-
-            const dettagli =
-                document.getElementById("giftDetails");
-
-            const pulsante =
-                document.getElementById("giftToggleButton");
-
-
-            if (
-                dettagli.style.display === "block"
-            ) {
-
-                dettagli.style.display =
-                    "none";
-
-                pulsante.textContent =
-                    "Scopri le possibilità";
-
-            }
-
-            else {
-
-                dettagli.style.display =
-                    "block";
-
-                pulsante.textContent =
-                    "Nascondi dettagli";
-
-            }
-
-        }
-
-
-        /* =====================================================
-           COPIA IBAN
-           ===================================================== */
-
-        function copiaIBAN() {
-
-            const iban =
-                document.getElementById("ibanValue").textContent.trim();
-
-
-            if (
-                iban === "IBAN DA INSERIRE"
-            ) {
+        navigator.clipboard.writeText(iban)
+            .then(function() {
 
                 alert(
-                    "L'IBAN non è ancora stato inserito."
+                    "IBAN copiato negli appunti."
                 );
 
-                return;
-
-            }
-
-
-            navigator.clipboard.writeText(iban)
-                .then(function() {
-
-                    alert(
-                        "IBAN copiato negli appunti."
-                    );
-
-                })
-                .catch(function() {
-
-                    alert(
-                        "Non è stato possibile copiare automaticamente l'IBAN."
-                    );
-
-                });
-
-        }
-
-
-
-        /* =====================================================
-           =====================================================
-           SEZIONE 11 — RSVP
-           Qui viene mantenuta la logica del modulo RSVP.
-           =====================================================
-           ===================================================== */
-
-
-        const RSVP_URL =
-            "https://script.google.com/macros/s/AKfycbzrwWGD_MwH_LtOigXzLjsStvL7IvkT6AxniF32qk-_ObtnmVZcYHrA4aqXdQGWgKbF/exec";
-
-
-        const form =
-            document.getElementById("rsvpForm");
-
-
-        const campiPartecipazione =
-            document.getElementById("campiPartecipazione");
-
-
-        const submitButton =
-            document.getElementById("submitButton");
-
-
-        const successMessage =
-            document.getElementById("successMessage");
-
-
-        const successTitle =
-            document.getElementById("successTitle");
-
-
-        const successText =
-            document.getElementById("successText");
-
-
-        const presenzaInputs =
-            document.querySelectorAll(
-                'input[name="presenza"]'
-            );
-
-
-        const personeSelect =
-            document.querySelector(
-                'select[name="persone"]'
-            );
-			
-			
-			personeSelect.addEventListener(
-			"change",
-			function() {
-
-				const noteLabel =
-					document.getElementById("noteLabel");
-
-				const noteInput =
-					document.getElementById("noteInput");
-
-
-				if (
-					personeSelect.value !== "1 Persona"
-				) {
-
-					noteLabel.textContent =
-						"Nomi e cognomi degli altri partecipanti";
-
-					noteInput.placeholder =
-						"Indica qui nome e cognome delle persone che saranno con te. Puoi aggiungere eventuali altre note o richieste.";
-
-				}
-
-				else {
-
-					noteLabel.textContent =
-						"C'è qualcosa che vorresti segnalarci?";
-
-					noteInput.placeholder =
-						"Esigenze particolari, richieste o qualsiasi altra cosa che dovremmo sapere.";
-
-				}
-
-			}
-		);
-
-
-
-        const allergieInput =
-            document.querySelector(
-                'input[name="allergie"]'
-            );
-
-
-        const noteInput =
-            document.querySelector(
-                'textarea[name="note"]'
-            );
-
-
-        const alimentazioneInputs =
-            document.querySelectorAll(
-                'input[name="alimentazione"]'
-            );
-
-
-        const nessunaAlimentazione =
-            document.getElementById(
-                "nessunaAlimentazione"
-            );
-			
-			const allergieBox =
-    document.getElementById("allergieBox");
-
-
-		function aggiornaAllergie() {
-
-			const allergieSelezionate =
-				document.querySelector(
-					'input[name="alimentazione"][value="Allergie alimentari"]'
-				);
-
-
-			if (
-				allergieSelezionate &&
-				allergieSelezionate.checked
-			) {
-
-				allergieBox.style.display =
-					"block";
-
-			}
-
-			else {
-
-				allergieBox.style.display =
-					"none";
-
-				allergieInput.value =
-					"";
-					
-				allergieBox.style.display =
-					"none";
-
-			}
-
-		}
-
-
-		alimentazioneInputs.forEach(
-				function(input) {
-
-					input.addEventListener(
-						"change",
-						aggiornaAllergie
-					);
-
-				}
-			);
-
-
-
-        /* =====================================================
-           ESTRAE SOLO IL NOME
-           ===================================================== */
-
-        function estraiNomeCompleto(testo) {
-
-            const valore =
-                testo.trim().replace(/\s+/g, " ");
-
-
-            if (!valore) {
-                return "❤️";
-            }
-
-
-            const parti =
-                valore.split(" ");
-
-
-            return parti[0];
-
-        }
-
-
-        /* =====================================================
-           MOSTRA CONFERMA
-           ===================================================== */
-
-        function mostraConferma(tipo, nome, numeroPersone) {
-
-            form.style.display = "none";
-
-            successMessage.style.display = "block";
-
-
-            const nomeVisualizzato =
-                estraiNomeCompleto(nome);
-
-
-            /* RISPOSTA NEGATIVA */
-
-            if (tipo === "no") {
-
-                successTitle.textContent =
-                    "Grazie " + nomeVisualizzato + " ❤️";
-
-
-                successText.innerHTML =
-                    "Abbiamo ricevuto la tua risposta.<br>" +
-                    "Ci dispiace non poterti avere con noi,<br>" +
-                    "ma saremo felici di averti vicino con il cuore. ❤️";
-
-            }
-
-
-            /* UNA PERSONA */
-
-            else if (numeroPersone === "1 Persona") {
-
-                successTitle.textContent =
-                    "Grazie " + nomeVisualizzato + " ❤️";
-
-
-                successText.innerHTML =
-                    "Abbiamo ricevuto la tua conferma.<br>" +
-                    "Non vediamo l'ora di festeggiare insieme a te!";
-
-            }
-
-
-            /* DUE O PIÙ PERSONE */
-
-            else {
-
-                successTitle.textContent =
-                    "Grazie " + nomeVisualizzato + " ❤️";
-
-
-                successText.innerHTML =
-                    "Abbiamo ricevuto la vostra conferma.<br>" +
-                    "Non vediamo l'ora di festeggiare insieme a voi!";
-
-            }
-
-        }
-
-
-        /* =====================================================
-           VERIFICA SE È GIÀ STATA INVIATA UNA RISPOSTA
-           ===================================================== */
-
-        function controllaRSVPSalvato() {
-
-            const rsvpInviato =
-                localStorage.getItem(
-                    "eleonoraDanieleRSVP"
+            })
+            .catch(function() {
+
+                alert(
+                    "Non è stato possibile copiare automaticamente l'IBAN."
                 );
 
+            });
+    }
 
-            const rsvpNome =
-                localStorage.getItem(
-                    "eleonoraDanieleRSVPNome"
-                );
 
+    /* =====================================================
+       AVVIO
+       ===================================================== */
 
-            const rsvpPersone =
-                localStorage.getItem(
-                    "eleonoraDanieleRSVPPersone"
-                );
+    controllaPagina();
 
+    controllaRSVPSalvato();
 
-            if (rsvpInviato === "si") {
+    checkFormValidity();
 
-                mostraConferma(
-                    "si",
-                    rsvpNome || "",
-                    rsvpPersone || "1 Persona"
-                );
+</script>
+```
 
-            }
 
-            else if (rsvpInviato === "no") {
-
-                mostraConferma(
-                    "no",
-                    rsvpNome || "",
-                    ""
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           PRESENZA
-           ===================================================== */
-
-        function aggiornaCampi() {
-
-            const selezionato =
-                document.querySelector(
-                    'input[name="presenza"]:checked'
-                );
-
-
-            if (
-                selezionato &&
-                selezionato.value ===
-                "Purtroppo non potrò esserci"
-            ) {
-
-                campiPartecipazione.style.display =
-                    "none";
-
-
-                personeSelect.value =
-                    "1 Persona";
-
-
-                allergieInput.value =
-                    "";
-
-
-                noteInput.value =
-                    "";
-
-
-                alimentazioneInputs.forEach(
-                    function(input) {
-
-                        input.checked = false;
-
-                    }
-                );
-
-            }
-
-            else {
-
-                campiPartecipazione.style.display =
-                    "block";
-
-            }
-
-        }
-
-
-        presenzaInputs.forEach(
-            function(input) {
-
-                input.addEventListener(
-                    "change",
-                    aggiornaCampi
-                );
-
-            }
-        );
-
-
-
-  
-		  /* =====================================================
-		   ALIMENTAZIONE
-		   "NESSUNA" È ESCLUSIVA
-		   ===================================================== */
-
-		alimentazioneInputs.forEach(
-			function(input) {
-
-				input.addEventListener(
-					"change",
-					function() {
-
-
-						if (
-							input ===
-							nessunaAlimentazione &&
-							input.checked
-						) {
-
-							alimentazioneInputs.forEach(
-								function(altra) {
-
-									if (
-										altra !==
-										nessunaAlimentazione
-									) {
-
-										altra.checked =
-											false;
-
-									}
-
-								}
-							);
-
-							// Aggiorna anche la box delle allergie
-							aggiornaAllergie();
-
-						}
-
-
-						else if (
-							input !==
-							nessunaAlimentazione &&
-							input.checked
-						) {
-
-							nessunaAlimentazione.checked =
-								false;
-
-							// Aggiorna anche la box delle allergie
-							aggiornaAllergie();
-
-						}
-
-
-						else {
-
-							// Caso in cui viene tolta una spunta
-							aggiornaAllergie();
-
-						}
-
-					}
-				);
-
-			}
-		);
-
-		  
-		  
-		  
-		  
-		  
-		  
-  
-
-        /* =====================================================
-           INVIO RSVP
-           ===================================================== */
-
-			   form.addEventListener(
-				"submit",
-				async function(event) {
-
-					event.preventDefault();
-
-					const presenza =
-						document.querySelector(
-							'input[name="presenza"]:checked'
-						);
-
-					if (!presenza) {
-
-						alert(
-							"Seleziona se parteciperai oppure no."
-						);
-
-						return;
-					}
-
-					submitButton.disabled = true;
-					submitButton.textContent = "Invio in corso...";
-
-					const formData = new FormData(form);
-
-					const nomeInserito =
-						formData.get("nome") || "";
-
-					const personeInserite =
-						formData.get("persone") || "1 Persona";
-
-
-					/*
-					 * INVIO A GOOGLE APPS SCRIPT
-					 *
-					 * La risposta non viene letta perché utilizziamo
-					 * mode: "no-cors".
-					 */
-
-					void fetch(
-						RSVP_URL,
-						{
-							method: "POST",
-							body: formData,
-							mode: "no-cors"
-						}
-					);
-
-
-
-
-					/*
-					 * DA QUI IN POI CONSIDERIAMO L'RSVP INVIATO.
-					 */
-
-					localStorage.setItem(
-						"eleonoraDanieleRSVPNome",
-						nomeInserito
-					);
-
-
-					/* RISPOSTA NEGATIVA */
-
-					if (
-						presenza.value ===
-						"Purtroppo non potrò esserci"
-					) {
-
-						localStorage.setItem(
-							"eleonoraDanieleRSVP",
-							"no"
-						);
-
-						localStorage.removeItem(
-							"eleonoraDanieleRSVPPersone"
-						);
-
-						mostraConferma(
-							"no",
-							nomeInserito,
-							""
-						);
-
-					}
-
-
-					/* RISPOSTA POSITIVA */
-
-					else {
-
-						localStorage.setItem(
-							"eleonoraDanieleRSVP",
-							"si"
-						);
-
-						localStorage.setItem(
-							"eleonoraDanieleRSVPPersone",
-							personeInserite
-						);
-
-						mostraConferma(
-							"si",
-							nomeInserito,
-							personeInserite
-						);
-
-					}
-
-
-					/*
-					 * PORTA LA CONFERMA AL CENTRO
-					 */
-
-					successMessage.scrollIntoView({
-
-						behavior: "smooth",
-
-						block: "center"
-
-					});
-
-				}
-			);
-
-   
-   
-   
-   
-   
-   
-   
-
-
-        /* =====================================================
-           AVVIO
-           ===================================================== */
-
-        controllaPagina();
-
-        controllaRSVPSalvato();
-
-
-    </script>
-	
-	<script>
-		const form = document.getElementById("rsvpForm");
-		const submitButton = document.getElementById("submitButton");
-
-		function checkForm() {
-
-			const nome = form.querySelector('input[name="nome"]');
-			const presenza = form.querySelector('input[name="presenza"]:checked');
-
-			console.log("Nome:", nome.value);
-			console.log("Presenza:", presenza);
-			
-			if (nome.value.trim() !== "" && presenza !== null) {
-				submitButton.classList.add("ready");
-				console.log("PULSANTE ORO");
-			} else {
-				submitButton.classList.remove("ready");
-				console.log("PULSANTE BORDO");
-			}
-		}
-
-		form.addEventListener("input", checkForm);
-		form.addEventListener("change", checkForm);
-
-		checkForm();
-	</script>
 
 
 
